@@ -3,7 +3,6 @@ using UnityEngine;
 using System;
 public class ColorChoices : MonoBehaviour
 {
-    // public static Action<Material> SendMaterial;
     public enum AvaliableColors
     {
         Red,

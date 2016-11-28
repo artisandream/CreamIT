@@ -5,6 +5,8 @@ public class Recycle : MonoBehaviour {
 
 	public static Action<NavAgent> SendToGenerator;
 	public NavAgent navAgent;
+	public SpriteRenderer center;
+	public Material black;
 
 	void Start()
 	{
@@ -13,6 +15,7 @@ public class Recycle : MonoBehaviour {
 	
 	void OnTriggerEnter()
 	{
+		center.material = black;
 		navAgent.StopAgent();
 		SendToGenerator(navAgent);
 	}

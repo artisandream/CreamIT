@@ -16,7 +16,6 @@ public class ColorTrigger : MonoBehaviour
             thisRenderer.material.name)
         {
             center.material = thisRenderer.material;
-            print(_c.GetComponent<SpriteRenderer>().material.name);
         }
     }
 }
