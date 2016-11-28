@@ -2,13 +2,22 @@
 
 public class ColorTrigger : MonoBehaviour
 {
+    public SpriteRenderer center;
 
-    void OnTriggerEnter(Collider _c)
+    SpriteRenderer thisRenderer;
+
+    void Start()
     {
+        thisRenderer = GetComponent<SpriteRenderer>();
+    }
+    void OnTriggerEnter(Collider _c)
+    {        
         if (_c.GetComponent<SpriteRenderer>().material.name ==
-            GetComponent<SpriteRenderer>().material.name)
+            thisRenderer.material.name)
         {
+            center.material = thisRenderer.material;
             print(_c.GetComponent<SpriteRenderer>().material.name);
         }
     }
 }
+    
