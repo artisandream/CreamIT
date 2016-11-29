@@ -27,13 +27,13 @@ public class DragableGenerator : MonoBehaviour {
 	}
     IEnumerator SetDrabables () {
 		yield return new WaitForSeconds(StaticVars.generateTime);
-		print(3);
 		int i = dragableList.Count-1;
-		int r = Random.Range(0, startpointList.Count-1);
-		while(startpointList.Count > 0){
+		while(i >= 0){
+			print(i);
+			int r = Random.Range(0, startpointList.Count-1);
 			yield return new WaitForSeconds(StaticVars.generateTime);
 			dragableList[i].position = startpointList[r].position;
-			startpointList.RemoveAt(0);
+			startpointList.RemoveAt(r);
 			i--;
 		}
 	}
