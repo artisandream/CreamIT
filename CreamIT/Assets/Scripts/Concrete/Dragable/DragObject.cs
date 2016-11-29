@@ -3,10 +3,11 @@ using System;
 public class DragObject : MonoBehaviour
 {
 
-	public static Action<Transform> SendToGenerator;
-	
+	public static Action<DragObject> SendToGenerator;
+	public static Action<Transform, DragObject> ReturnToGenerator;
+    public Transform lastStartPoint;
 	void Start () {
-		SendToGenerator(transform);
+		SendToGenerator(this);
 	}
     private Vector3 offset;
     void OnMouseDown()
@@ -16,5 +17,10 @@ public class DragObject : MonoBehaviour
     void OnMouseDrag()
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+    }
+
+    void OnMouseUp()
+    {
+         ReturnToGenerator(lastStartPoint, this);
     }
 }
