@@ -2,21 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Generator : MonoBehaviour {
+public class RingGenerator : MonoBehaviour {
 	public int agentCount = 20;
 	public List<NavAgent> RecycleList;
-	public Transform navPen;
+	public Transform rignOffScreen;
 	public Transform destination;
 
 	void Start () {
-		Recycle.SendToGenerator += AddToList;
+		RingRecycle.SendToGenerator += AddToList;
 		StartCoroutine(RecycleColors());
 	}
 
     private void AddToList(NavAgent obj)
     {
         RecycleList.Add(obj);
-		obj.transform.position = navPen.position;
+		obj.transform.position = rignOffScreen.position;
 	}
 
     IEnumerator RecycleColors () {

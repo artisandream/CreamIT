@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class Recycle : MonoBehaviour {
+public class RingRecycle : MonoBehaviour {
 
 	public static Action<NavAgent> SendToGenerator;
 	public NavAgent navAgent;

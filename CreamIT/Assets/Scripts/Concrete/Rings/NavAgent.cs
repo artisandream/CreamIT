@@ -9,7 +9,6 @@ public class NavAgent : MonoBehaviour {
 	public void ResetAgent (Transform destination) {
 		thisAgent.destination = destination.position;
 		thisAgent.speed = StaticVars.moveSpeed;
-		print(thisAgent.destination);
 		thisAgent.Resume();
 	}
 
