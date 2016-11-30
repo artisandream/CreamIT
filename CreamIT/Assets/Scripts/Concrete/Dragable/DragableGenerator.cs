@@ -37,11 +37,11 @@ public class DragableGenerator : MonoBehaviour
     }
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(StaticVars.generateTime);
+        yield return new WaitForSeconds(StaticVars.generateTime/2);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-			yield return new WaitForSeconds(StaticVars.generateTime);
+			yield return new WaitForSeconds(StaticVars.generateTime/2);
 			SetDrabablesHandler(dragableList[i]);
             i--;
         }
@@ -49,7 +49,7 @@ public class DragableGenerator : MonoBehaviour
 
     private IEnumerator ResetDrabables(DragObject dragable)
     {
-		yield return new WaitForSeconds(StaticVars.generateTime);
+		yield return new WaitForSeconds(StaticVars.generateTime/2);
         SetDrabablesHandler(dragable);
     }
 

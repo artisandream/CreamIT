@@ -8,13 +8,21 @@ public class ColorChoices : MonoBehaviour
         Red,
         Yellow,
         Blue,
-        Green
+        Green,
+        Pink,
+        Purple,
+        Orange,
+        LTBlue
     }
 
     public Material Red;
     public Material Yellow;
     public Material Blue;
     public Material Green;
+    public Material Pink;
+    public Material Purple;
+    public Material Orange;
+    public Material LTBlue;
 
     ColorChoices.AvaliableColors thisColor;
     Material thisMaterial;
@@ -45,6 +53,18 @@ public class ColorChoices : MonoBehaviour
                 break;
             case ColorChoices.AvaliableColors.Green:
                 thisMaterial = Green;
+                break;
+                case ColorChoices.AvaliableColors.Pink:
+                thisMaterial = Pink;
+                break;
+                case ColorChoices.AvaliableColors.Purple:
+                thisMaterial = Purple;
+                break;
+                case ColorChoices.AvaliableColors.LTBlue:
+                thisMaterial = LTBlue;
+                break;
+                case ColorChoices.AvaliableColors.Orange:
+                thisMaterial = Orange;
                 break;
 
             default:
