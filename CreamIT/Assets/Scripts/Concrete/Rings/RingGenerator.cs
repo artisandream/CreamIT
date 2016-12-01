@@ -10,8 +10,21 @@ public class RingGenerator : MonoBehaviour {
 
 	void Start () {
 		RingRecycle.SendToGenerator += AddToList;
-		StartCoroutine(RecycleColors());
+		StartGame.OnStartGame += OnStartGameHandler;
+		ResetGame.ResetLevel += OnResetGameHandler;
 	}
+
+    private void OnStartGameHandler()
+    {
+        StartCoroutine(RecycleColors());
+    }
+
+	private void OnResetGameHandler()
+    {
+		print("Stop");	
+		StopAllCoroutines();
+		RecycleList.Clear();	
+    }
 
     private void AddToList(NavAgent obj)
     {

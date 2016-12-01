@@ -16,6 +16,8 @@ public class ColorTrigger : MonoBehaviour
             thisRenderer.material.name)
         {
             center.material = thisRenderer.material;
+        } else {
+            StaticVars.moveSpeed += 0.2f;//refactor  
         }
     }
 }

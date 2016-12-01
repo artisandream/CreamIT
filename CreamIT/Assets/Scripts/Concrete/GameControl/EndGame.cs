@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
 
 public class EndGame : MonoBehaviour {
 
-	/// <summary>
-	/// OnTriggerEnter is called when the Collider other enters the trigger.
-	/// </summary>
-	/// <param name="other">The other Collider involved in this collision.</param>
+	public static Action GameOver;
 	void OnTriggerEnter(Collider other)
 	{
 		print("end");
+		GameOver();
 	}
 }

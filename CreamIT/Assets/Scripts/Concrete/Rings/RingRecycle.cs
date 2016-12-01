@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections;
 
 public class RingRecycle : MonoBehaviour {
 
@@ -11,12 +12,24 @@ public class RingRecycle : MonoBehaviour {
 	void Start()
 	{
 		SendToGenerator(navAgent);
+		ResetGame.ResetLevel += ResetRing;
+		ResetGame.ResetLevel += EndRing;
 	}
 	
 	void OnTriggerEnter()
 	{
-		center.material = black;
-		navAgent.StopAgent();
+		ResetRing();
 		SendToGenerator(navAgent);
 	}
+
+	private void EndRing ()
+	{
+		//Call animation to scale
+	}
+
+    private void ResetRing()
+    {
+        center.material = black;
+		navAgent.StopAgent();
+    }
 }

@@ -4,10 +4,10 @@ public class NavAgent : MonoBehaviour {
 	private NavMeshAgent thisAgent;
 	void Start () {
 		thisAgent = GetComponent<NavMeshAgent>();
-		StartGame.RunModGame += RunModGameHandler;
+		StartGame.OnModGame += OnModGameHandler;
 	}
 
-    private void RunModGameHandler()
+    private void OnModGameHandler()
     {
         thisAgent.speed = StaticVars.moveSpeed;
     }

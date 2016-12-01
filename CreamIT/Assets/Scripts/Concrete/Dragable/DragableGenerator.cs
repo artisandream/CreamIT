@@ -15,6 +15,11 @@ public class DragableGenerator : MonoBehaviour
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragObject.SendToGenerator += AddToDragableList;
         DragObject.ReturnToGenerator += ResetStartPoint;
+        StartGame.OnStartGame += OnStartGameHandler;
+    }
+
+    private void OnStartGameHandler()
+    {
         StartCoroutine(SetDrabables());
     }
 
@@ -37,11 +42,11 @@ public class DragableGenerator : MonoBehaviour
     }
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(StaticVars.generateTime/2);
+        yield return new WaitForSeconds(StaticVars.appearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-			yield return new WaitForSeconds(StaticVars.generateTime/2);
+			yield return new WaitForSeconds(StaticVars.appearTime);
 			SetDrabablesHandler(dragableList[i]);
             i--;
         }
@@ -49,7 +54,7 @@ public class DragableGenerator : MonoBehaviour
 
     private IEnumerator ResetDrabables(DragObject dragable)
     {
-		yield return new WaitForSeconds(StaticVars.generateTime/2);
+		yield return new WaitForSeconds(StaticVars.appearTime);
         SetDrabablesHandler(dragable);
     }
 
