@@ -1,5 +1,4 @@
-﻿
-public class ResetAssetColorer : ResetAsset {
+﻿public class ResetAssetColorer : ResetAsset {
 
 	public override void OnResetAsset()
     {

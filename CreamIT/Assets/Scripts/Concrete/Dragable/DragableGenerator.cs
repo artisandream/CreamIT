@@ -40,6 +40,7 @@ public class DragableGenerator : MonoBehaviour
         dragableList.Add(obj);
         obj.transform.position = dragableOffScreen.position;
     }
+
     IEnumerator SetDrabables()
     {
         yield return new WaitForSeconds(StaticVars.appearTime);
@@ -51,7 +52,7 @@ public class DragableGenerator : MonoBehaviour
             i--;
         }
     }
-
+    
     private IEnumerator ResetDrabables(DragObject dragable)
     {
 		yield return new WaitForSeconds(StaticVars.appearTime);

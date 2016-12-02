@@ -13,6 +13,7 @@ public class StartGame : MonoBehaviour
     public float appearTime = 0.2f;
     public int timesToMod = 3;
     public float modFactor = 2;
+    
     void Start()
     {
         StaticVars.appearTime = appearTime;

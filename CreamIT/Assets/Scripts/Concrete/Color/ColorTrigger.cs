@@ -5,7 +5,6 @@ public class ColorTrigger : MonoBehaviour
     public SpriteRenderer center;
     public GameObject ender;
     public GameObject recycler;
-    public Vector3 vect;
     SpriteRenderer thisRenderer;
 
     void Start()

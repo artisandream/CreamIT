@@ -21,7 +21,6 @@ public class RingGenerator : MonoBehaviour {
 
 	private void OnResetGameHandler()
     {
-		print("Stop");	
 		StopAllCoroutines();
 		RecycleList.Clear();	
     }

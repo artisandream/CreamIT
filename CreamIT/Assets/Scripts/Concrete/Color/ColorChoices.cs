@@ -34,8 +34,8 @@ public class ColorChoices : MonoBehaviour
     public Material OnSetColor()
     {
         Array values = Enum.GetValues(typeof(ColorChoices.AvaliableColors));
-        thisColor = 
-		(ColorChoices.AvaliableColors)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+        thisColor =
+        (ColorChoices.AvaliableColors)values.GetValue(UnityEngine.Random.Range(0, values.Length));
         return ChangeMaterial();
     }
     public Material ChangeMaterial()
@@ -54,16 +54,16 @@ public class ColorChoices : MonoBehaviour
             case ColorChoices.AvaliableColors.Green:
                 thisMaterial = Green;
                 break;
-                case ColorChoices.AvaliableColors.Pink:
+            case ColorChoices.AvaliableColors.Pink:
                 thisMaterial = Pink;
                 break;
-                case ColorChoices.AvaliableColors.Purple:
+            case ColorChoices.AvaliableColors.Purple:
                 thisMaterial = Purple;
                 break;
-                case ColorChoices.AvaliableColors.LTBlue:
+            case ColorChoices.AvaliableColors.LTBlue:
                 thisMaterial = LTBlue;
                 break;
-                case ColorChoices.AvaliableColors.Orange:
+            case ColorChoices.AvaliableColors.Orange:
                 thisMaterial = Orange;
                 break;
 
