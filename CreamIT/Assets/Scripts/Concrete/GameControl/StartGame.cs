@@ -9,6 +9,7 @@ public class StartGame : MonoBehaviour
     public int GameModTime = 15;
     public float generateTime = 2f;
     public float moveSpeed = 3.5f;
+    public float addSpeed = 0.1f;
     public float appearTime = 0.2f;
     public int timesToMod = 3;
     public float modFactor = 2;
@@ -18,6 +19,13 @@ public class StartGame : MonoBehaviour
         StaticVars.generateTime = generateTime;
         StaticVars.moveSpeed = moveSpeed;
         StartButton.CallStart += OnStartGameHandler;
+        StaticVars.addSpeed = addSpeed;
+        ResetGame.ResetLevel += OnResetLevel;
+    }
+
+    private void OnResetLevel()
+    {
+        StopAllCoroutines();
     }
 
     void OnStartGameHandler () {
@@ -29,7 +37,6 @@ public class StartGame : MonoBehaviour
     {
         while (timesToMod > 0)
         {
-			print("mod");
             yield return new WaitForSeconds(GameModTime);
             StaticVars.moveSpeed += modFactor;
             StaticVars.generateTime /= modFactor;

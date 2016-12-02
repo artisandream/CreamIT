@@ -3,7 +3,9 @@
 public class ColorTrigger : MonoBehaviour
 {
     public SpriteRenderer center;
-
+    public GameObject ender;
+    public GameObject recycler;
+    public Vector3 vect;
     SpriteRenderer thisRenderer;
 
     void Start()
@@ -16,8 +18,10 @@ public class ColorTrigger : MonoBehaviour
             thisRenderer.material.name)
         {
             center.material = thisRenderer.material;
+            ender.SetActive(false);
+            recycler.SetActive(true);
         } else {
-            StaticVars.moveSpeed += 0.2f;//refactor  
+            StaticVars.moveSpeed += StaticVars.addSpeed;
         }
     }
 }

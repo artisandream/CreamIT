@@ -18,6 +18,7 @@ public class RingRecycle : MonoBehaviour {
 	
 	void OnTriggerEnter()
 	{
+		print("h");
 		ResetRing();
 		SendToGenerator(navAgent);
 	}
