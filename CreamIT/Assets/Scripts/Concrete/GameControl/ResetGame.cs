@@ -4,6 +4,7 @@ using System;
 public class ResetGame : MonoBehaviour, IReset {
 
 	public static Action ResetLevel;
+	
 	public static Action RestartLevel;
 	
 	public void Start(){

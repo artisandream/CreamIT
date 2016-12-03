@@ -16,22 +16,27 @@ public class StartGame : MonoBehaviour, IReset
     
     public void Start()
     {
+        SetStartValues();
+        ResetGame.RestartLevel += OnRestart;
+        ResetGame.ResetLevel += OnReset;
+    }
+
+    void SetStartValues () {
         StaticVars.appearTime = appearTime;
         StaticVars.generateTime = generateTime;
         StaticVars.moveSpeed = moveSpeed;
-        ResetGame.RestartLevel += OnRestart;
         StaticVars.addSpeed = addSpeed;
-        ResetGame.ResetLevel += OnReset;
-        ResetGame.RestartLevel += OnRestart;
     }
 
     public void OnReset()
     {
+        SetStartValues();
         StopAllCoroutines();
     }
 
     IEnumerator ModGame()
     {
+        int tempModTimes = timesToMod;
         while (timesToMod > 0)
         {
             yield return new WaitForSeconds(GameModTime);
@@ -40,11 +45,11 @@ public class StartGame : MonoBehaviour, IReset
             OnModGame();
 			timesToMod--;
         }
+        timesToMod = tempModTimes;
     }
 
     public void OnRestart()
     {
-        OnStartGame();
         StartCoroutine(ModGame());
     }
 }

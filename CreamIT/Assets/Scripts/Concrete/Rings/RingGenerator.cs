@@ -11,14 +11,9 @@ public class RingGenerator : MonoBehaviour, IReset {
 
 	public void Start () {
 		RingRecycle.SendToGenerator += AddToList;
-		StartGame.OnStartGame += OnStart;
 		ResetGame.ResetLevel += OnReset;
+		ResetGame.RestartLevel += OnRestart;
 	}
-
-    private void OnStart() 
-    {
-        StartCoroutine(RecycleColors());
-    }
 
 	public void OnReset()
     {
@@ -44,6 +39,6 @@ public class RingGenerator : MonoBehaviour, IReset {
 
     public void OnRestart()
     {
-        throw new NotImplementedException();
+        StartCoroutine(RecycleColors());
     }
 }

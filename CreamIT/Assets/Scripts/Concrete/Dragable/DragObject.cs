@@ -6,10 +6,17 @@ public class DragObject : MonoBehaviour
     public static Action<DragObject> SendToGenerator;
     public static Action<Transform, DragObject> ReturnToGenerator;
     public Transform lastStartPoint;
+    public Transform StartPoint;
     private Vector3 offset;
     void Start()
     {
+        ResetGame.RestartLevel += OnRestart;
         SendToGenerator(this);
+    }
+
+    private void OnRestart()
+    {
+        transform.position = StartPoint.localPosition;
     }
 
     void OnMouseDown()

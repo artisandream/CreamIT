@@ -10,8 +10,9 @@ public class RingRecycle : MonoBehaviour, IReset {
 
 	public void Start()
 	{
-		SendToGenerator(navAgent);
+		OnRestart();
 		ResetGame.ResetLevel += OnReset;
+		ResetGame.RestartLevel += OnRestart;
 	}
 	
 	void OnTriggerEnter()
@@ -28,6 +29,6 @@ public class RingRecycle : MonoBehaviour, IReset {
 
     public void OnRestart()
     {
-        throw new NotImplementedException();
+        SendToGenerator(navAgent);
     }
 }
