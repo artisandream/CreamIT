@@ -4,9 +4,15 @@ using System;
 public class DragableStartPoint : MonoBehaviour {
 
 	public static Action<Transform> SendToGenerator;
-	
-	void Start () {
-		SendToGenerator(transform);
+
+    public void OnRestart()
+    {
+        SendToGenerator(transform);
+    }
+
+    public void Start () {
+		ResetGame.RestartLevel += OnRestart;
+//		SendToGenerator(transform);
 	}
 	
 }

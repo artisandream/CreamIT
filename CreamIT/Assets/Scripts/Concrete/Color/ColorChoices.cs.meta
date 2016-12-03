@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ece68de4263434f0aab4d58a489cdc47
-timeCreated: 1480465629
+timeCreated: 1480574954
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -13,7 +13,7 @@ MonoImporter:
   - Purple: {fileID: 2100000, guid: 763efb25ffd264884be6fa8b6c425892, type: 2}
   - Orange: {fileID: 2100000, guid: 24bc3dc5b55444f70924f798ef5867a8, type: 2}
   - LTBlue: {fileID: 2100000, guid: 0aec4aacbd80041139ae8632d816513f, type: 2}
-  executionOrder: 100
+  executionOrder: 8
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

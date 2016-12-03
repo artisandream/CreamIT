@@ -3,18 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class DragableGenerator : MonoBehaviour
+public class DragableGenerator : MonoBehaviour, IReset
 {
 
     public List<Transform> startpointList;
     public List<DragObject> dragableList;
     public Transform dragableOffScreen;
 
-    void Start()
+    public void Start()
     {
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragObject.SendToGenerator += AddToDragableList;
         DragObject.ReturnToGenerator += ResetStartPoint;
+        ResetGame.ResetLevel += OnReset;
+        ResetGame.RestartLevel += OnRestart;
+    }
+
+    private void OnStartGameHandler()
+    {
+        StartCoroutine(SetDrabables());
+    }
+
+    public void OnRestart()
+    {
         StartCoroutine(SetDrabables());
     }
 
@@ -35,21 +46,22 @@ public class DragableGenerator : MonoBehaviour
         dragableList.Add(obj);
         obj.transform.position = dragableOffScreen.position;
     }
+
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(StaticVars.generateTime/2);
+        yield return new WaitForSeconds(StaticVars.appearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-			yield return new WaitForSeconds(StaticVars.generateTime/2);
+			yield return new WaitForSeconds(StaticVars.appearTime);
 			SetDrabablesHandler(dragableList[i]);
             i--;
         }
     }
-
+    
     private IEnumerator ResetDrabables(DragObject dragable)
     {
-		yield return new WaitForSeconds(StaticVars.generateTime/2);
+		yield return new WaitForSeconds(StaticVars.appearTime);
         SetDrabablesHandler(dragable);
     }
 
@@ -59,5 +71,10 @@ public class DragableGenerator : MonoBehaviour
         dragable.transform.position = startpointList[r].position;
         dragable.lastStartPoint = startpointList[r];
         startpointList.RemoveAt(r);
+    }
+
+    public void OnReset()
+    {
+        startpointList.Clear();
     }
 }
