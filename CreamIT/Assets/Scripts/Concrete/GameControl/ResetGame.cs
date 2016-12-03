@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using System;
 
-public class ResetGame : MonoBehaviour {
+public class ResetGame : MonoBehaviour, IReset {
 
 	public static Action ResetLevel;
+	public static Action RestartLevel;
 	
-	void Start(){
+	public void Start(){
 		EndGame.GameOver += OnReset;
+		StartButton.StartButtonCall += OnRestart;
 	}
-	void OnReset () {
+	public void OnReset () {
 		ResetLevel();
 	}
+
+    public void OnRestart()
+    {
+        RestartLevel();
+    }
 }

@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class StartGame : MonoBehaviour
+public class StartGame : MonoBehaviour, IReset
 {
     public static Action OnStartGame;
     public static Action OnModGame;
@@ -14,24 +14,20 @@ public class StartGame : MonoBehaviour
     public int timesToMod = 3;
     public float modFactor = 2;
     
-    void Start()
+    public void Start()
     {
         StaticVars.appearTime = appearTime;
         StaticVars.generateTime = generateTime;
         StaticVars.moveSpeed = moveSpeed;
-        StartButton.CallStart += OnStartGameHandler;
+        ResetGame.RestartLevel += OnRestart;
         StaticVars.addSpeed = addSpeed;
-        ResetGame.ResetLevel += OnResetLevel;
+        ResetGame.ResetLevel += OnReset;
+        ResetGame.RestartLevel += OnRestart;
     }
 
-    private void OnResetLevel()
+    public void OnReset()
     {
         StopAllCoroutines();
-    }
-
-    void OnStartGameHandler () {
-        OnStartGame();
-        StartCoroutine(ModGame());
     }
 
     IEnumerator ModGame()
@@ -44,5 +40,11 @@ public class StartGame : MonoBehaviour
             OnModGame();
 			timesToMod--;
         }
+    }
+
+    public void OnRestart()
+    {
+        OnStartGame();
+        StartCoroutine(ModGame());
     }
 }

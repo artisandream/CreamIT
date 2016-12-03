@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-public class RingGenerator : MonoBehaviour {
+public class RingGenerator : MonoBehaviour, IReset {
 	public int agentCount = 20;
 	public List<NavAgent> RecycleList;
 	public Transform rignOffScreen;
 	public Transform destination;
 
-	void Start () {
+	public void Start () {
 		RingRecycle.SendToGenerator += AddToList;
-		StartGame.OnStartGame += OnStartGameHandler;
-		ResetGame.ResetLevel += OnResetGameHandler;
+		StartGame.OnStartGame += OnStart;
+		ResetGame.ResetLevel += OnReset;
 	}
 
-    private void OnStartGameHandler()
+    private void OnStart() 
     {
         StartCoroutine(RecycleColors());
     }
 
-	private void OnResetGameHandler()
+	public void OnReset()
     {
 		StopAllCoroutines();
 		RecycleList.Clear();	
@@ -35,9 +36,14 @@ public class RingGenerator : MonoBehaviour {
 		while(agentCount > 0){
 			yield return new WaitForSeconds(StaticVars.generateTime);
 			RecycleList[0].transform.position = transform.position;
-			RecycleList[0].ResetAgent(destination);
+			RecycleList[0].OnSet(destination);
 			RecycleList.RemoveAt(0);
 			agentCount--;
 		}
 	}
+
+    public void OnRestart()
+    {
+        throw new NotImplementedException();
+    }
 }

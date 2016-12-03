@@ -1,25 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 
-public class StartButton : MonoBehaviour {
+public class StartButton : MonoBehaviour, IReset {
 
 	public Animator uiAnims;
-	public static Action CallStart;
+	public static Action StartButtonCall;
+	Button startButton;
 
-	void Start()
+	public void Start()
 	{
-		uiAnims.SetBool("True", false);
-		ResetGame.ResetLevel += OnResetButton;
+		startButton = GetComponent<Button>();
+		startButton.onClick.AddListener(() => OnRestart());
+		uiAnims.SetBool("Start", true);
+		ResetGame.ResetLevel += OnReset;
 	}
 
-    private void OnResetButton()
+    public void OnReset()
     {
-        uiAnims.SetBool("True", false);
+        uiAnims.SetBool("Start", true);
     }
 
-    public void OnStartGame () {
-		CallStart();
+    public void OnRestart()
+    {
+        StartButtonCall();
 		uiAnims.SetBool("Start", false);
-	}
-
+    }
 }

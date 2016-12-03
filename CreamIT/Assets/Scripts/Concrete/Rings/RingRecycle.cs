@@ -1,28 +1,33 @@
 ﻿using UnityEngine;
 using System;
 
-public class RingRecycle : MonoBehaviour {
+public class RingRecycle : MonoBehaviour, IReset {
 
 	public static Action<NavAgent> SendToGenerator;
 	public NavAgent navAgent;
 	public SpriteRenderer center;
 	public Material black;
 
-	void Start()
+	public void Start()
 	{
 		SendToGenerator(navAgent);
-		ResetGame.ResetLevel += ResetRing;
+		ResetGame.ResetLevel += OnReset;
 	}
 	
 	void OnTriggerEnter()
 	{
-		ResetRing();
+		OnReset();
 		SendToGenerator(navAgent);
 	}
 
-    private void ResetRing()
+    public void OnReset()
     {
         center.material = black;
 		navAgent.StopAgent();
+    }
+
+    public void OnRestart()
+    {
+        throw new NotImplementedException();
     }
 }

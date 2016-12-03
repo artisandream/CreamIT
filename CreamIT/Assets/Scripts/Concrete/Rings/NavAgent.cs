@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 public class NavAgent : MonoBehaviour {
 
 	private NavMeshAgent thisAgent;
@@ -12,7 +13,7 @@ public class NavAgent : MonoBehaviour {
         thisAgent.speed = StaticVars.moveSpeed;
     }
 
-    public void ResetAgent (Transform destination) {
+    public void OnSet (Transform destination) {
 		thisAgent.destination = destination.position;
 		thisAgent.speed = StaticVars.moveSpeed;
 		thisAgent.Resume();

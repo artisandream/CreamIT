@@ -33,3 +33,10 @@ public interface ISelectDot
     void OnMouseUp(); //Activacts Collider;
     //I don't know how to move a dot yet
 }
+
+public interface IReset
+{
+    void Start ();
+    void OnReset();
+    void OnRestart();
+}
