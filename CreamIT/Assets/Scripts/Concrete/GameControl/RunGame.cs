@@ -16,12 +16,32 @@ public class RunGame : MonoBehaviour, IReset
     public void Start()
     {
         EndGame.GameOver += OnReset;
-        StartButton.StartButtonCall += OnRestart;
-        Invoke ("CheckLevel", 0.01f);
+        StartButton.StartButtonCall += OnStartButton;
+        NextLevel.GoToNextLevel += GoToNextLevelHandler;
+        Invoke("CheckLevel", 0.01f);
     }
 
-    int i = 0;
-  
+    private void OnStartButton()
+    {
+        nextLevelNum = 0;
+        OnRestart();
+    }
+
+    private void GoToNextLevelHandler()
+    {
+        if (nextLevelNum < levelObjects.Count-1)
+        {
+            nextLevelNum++;
+        }
+        else
+        {
+            nextLevelNum = 0;
+        }
+        OnRestart();
+    }
+
+    int nextLevelNum = 0;
+
     public void OnReset()
     {
         StopAllCoroutines();
@@ -30,24 +50,25 @@ public class RunGame : MonoBehaviour, IReset
 
     public void OnRestart()
     {
+        StopAllCoroutines();
         CheckLevel();
-		OnStartLevel(currentLevel);
+        OnStartLevel(currentLevel);
         StartCoroutine(ModGame());
         RestartLevel();
     }
 
     private void CheckLevel()
     {
-        currentLevel = levelObjects[0];
+        currentLevel = levelObjects[nextLevelNum];
     }
 
     IEnumerator ModGame()
     {
-        int currentLevelModeCount = currentLevel.levelModeCount;
+        int currentLevelModeCount = currentLevel.levelModCount;
         while (currentLevelModeCount > 0)
         {
             yield return new WaitForSeconds(currentLevel.levelModTimeHold);
-			print(currentLevel);
+            print(currentLevel);
             OnModGame(currentLevel);
             currentLevelModeCount--;
         }

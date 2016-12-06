@@ -9,6 +9,6 @@ public class LevelObject : MonoBehaviour {
     public float dragableAppearTime = 0.2f;
     //Level Mods
     public int levelModTimeHold = 15;
-    public int levelModeCount = 3;
+    public int levelModCount = 3;
     //public float levelModFactor = 2;
 }
