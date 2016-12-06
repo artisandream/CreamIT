@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
-public class DragableGenerator : MonoBehaviour, IReset
+public class DragableGenerator : MonoBehaviour
 {
 
     public List<Transform> startpointList;
+    public List<Transform> startpointHoldList;
     public List<DragObject> dragableList;
     public Transform dragableOffScreen;
 
@@ -15,14 +15,15 @@ public class DragableGenerator : MonoBehaviour, IReset
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragObject.SendToGenerator += AddToDragableList;
         DragObject.ReturnToGenerator += ResetStartPoint;
-        RunGame.ResetLevel += OnReset;
-        RunGame.RestartLevel += OnRestart;
+        //RunGame.ResetLevel += OnReset;
+        //RunGame.RestartLevel += OnRestart;
+        StartButton.StartButtonCall += OnRestart;
     }
 
-    private void OnStartGameHandler()
-    {
-        StartCoroutine(SetDrabables());
-    }
+    // private void OnStartGameHandler()
+    // {
+    //     StartCoroutine(SetDrabables());
+    // }
 
     public void OnRestart()
     {
@@ -49,19 +50,23 @@ public class DragableGenerator : MonoBehaviour, IReset
 
     IEnumerator SetDrabables()
     {
+        foreach (Transform point in startpointHoldList)
+        {
+            startpointList.Add(point);
+        }
         yield return new WaitForSeconds(StaticVars.appearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-			yield return new WaitForSeconds(StaticVars.appearTime);
-			SetDrabablesHandler(dragableList[i]);
+            yield return new WaitForSeconds(StaticVars.appearTime);
+            SetDrabablesHandler(dragableList[i]);
             i--;
         }
     }
-    
+
     private IEnumerator ResetDrabables(DragObject dragable)
     {
-		yield return new WaitForSeconds(StaticVars.appearTime);
+        yield return new WaitForSeconds(StaticVars.appearTime);
         SetDrabablesHandler(dragable);
     }
 
@@ -70,11 +75,8 @@ public class DragableGenerator : MonoBehaviour, IReset
         int r = UnityEngine.Random.Range(0, startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;
         dragable.lastStartPoint = startpointList[r];
+        startpointHoldList.Add(startpointList[r]);
         startpointList.RemoveAt(r);
-    }
-
-    public void OnReset()
-    {
-        startpointList.Clear();
+        
     }
 }

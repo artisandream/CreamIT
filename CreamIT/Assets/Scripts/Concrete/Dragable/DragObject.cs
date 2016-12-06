@@ -8,9 +8,10 @@ public class DragObject : MonoBehaviour
     public Transform lastStartPoint;
     public Transform StartPoint;
     private Vector3 offset;
+    
     void Start()
     {
-        RunGame.RestartLevel += OnRestart;
+        //RunGame.RestartLevel += OnRestart;
         SendToGenerator(this);
     }
 

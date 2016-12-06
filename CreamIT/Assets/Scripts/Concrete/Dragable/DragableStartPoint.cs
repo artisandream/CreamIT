@@ -11,8 +11,8 @@ public class DragableStartPoint : MonoBehaviour {
     }
 
     public void Start () {
-		RunGame.RestartLevel += OnRestart;
-//		SendToGenerator(transform);
+//		RunGame.RestartLevel += OnRestart;
+		SendToGenerator(transform);
 	}
 	
 }

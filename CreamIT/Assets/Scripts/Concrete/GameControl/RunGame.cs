@@ -68,7 +68,6 @@ public class RunGame : MonoBehaviour, IReset
         while (currentLevelModeCount > 0)
         {
             yield return new WaitForSeconds(currentLevel.levelModTimeHold);
-            print(currentLevel);
             OnModGame(currentLevel);
             currentLevelModeCount--;
         }
