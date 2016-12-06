@@ -4,20 +4,27 @@ using System.Collections.Generic;
 
 public class RingGenerator : MonoBehaviour, IReset {
 
-	public int agentCount = 20;
-	private int agentRecount;
-	public List<RingAsset> RecycleList;
-	public Transform rignOffScreen;
+	private int ringCount;
+	public Transform rignRelocation;
 	public Transform destination;
+	private LevelObject currentLevel;
+	public List<RingAsset> RecycleList;
+	
 
 	public void Start () {
-		agentRecount = agentCount;
 		RingAsset.SendToGenerator += AddToList;
-		ResetGame.ResetLevel += OnReset;
-		ResetGame.RestartLevel += OnRestart;
+		RunGame.OnStartLevel += OnStartLevelHandler;
+		RunGame.ResetLevel += OnReset;
+		RunGame.RestartLevel += OnRestart;
 	}
 
-	public void OnReset()
+    private void OnStartLevelHandler(LevelObject obj)
+    {
+        currentLevel = obj;
+		ringCount = currentLevel.ringCount;
+    }
+
+    public void OnReset()
     {
 		StopAllCoroutines();
 		RecycleList.Clear();	
@@ -26,22 +33,22 @@ public class RingGenerator : MonoBehaviour, IReset {
     private void AddToList(RingAsset obj)
     {
         RecycleList.Add(obj);
-		obj.transform.position = rignOffScreen.position;
+		obj.transform.position = rignRelocation.position;
 	}
 
     IEnumerator RecycleColors () {
-		while(agentCount > 0){
+		while(ringCount > 0){
 			yield return new WaitForSeconds(StaticVars.generateTime);
 			RecycleList[0].transform.position = transform.position;
-			RecycleList[0].OnSet(destination);
+			RecycleList[0].OnSet(destination, currentLevel);
 			RecycleList.RemoveAt(0);
-			agentCount--;
+			ringCount--;
 		}
 	}
 
     public void OnRestart()
     {
-		agentCount = agentRecount;
+		ringCount = currentLevel.ringCount;
         StartCoroutine(RecycleColors());
     }
 }

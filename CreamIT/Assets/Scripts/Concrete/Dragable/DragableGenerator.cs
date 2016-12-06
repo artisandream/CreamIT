@@ -15,8 +15,8 @@ public class DragableGenerator : MonoBehaviour, IReset
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragObject.SendToGenerator += AddToDragableList;
         DragObject.ReturnToGenerator += ResetStartPoint;
-        ResetGame.ResetLevel += OnReset;
-        ResetGame.RestartLevel += OnRestart;
+        RunGame.ResetLevel += OnReset;
+        RunGame.RestartLevel += OnRestart;
     }
 
     private void OnStartGameHandler()

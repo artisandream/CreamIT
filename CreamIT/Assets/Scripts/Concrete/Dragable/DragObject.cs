@@ -10,7 +10,7 @@ public class DragObject : MonoBehaviour
     private Vector3 offset;
     void Start()
     {
-        ResetGame.RestartLevel += OnRestart;
+        RunGame.RestartLevel += OnRestart;
         SendToGenerator(this);
     }
 
