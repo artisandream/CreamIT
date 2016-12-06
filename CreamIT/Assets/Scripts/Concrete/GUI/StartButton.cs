@@ -13,7 +13,7 @@ public class StartButton : MonoBehaviour, IReset {
 		startButton = GetComponent<Button>();
 		startButton.onClick.AddListener(() => OnRestart());
 		uiAnims.SetBool("Start", true);
-		ResetGame.ResetLevel += OnReset;
+		RunGame.ResetLevel += OnReset;
 	}
 
     public void OnReset()
