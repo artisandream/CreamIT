@@ -26,6 +26,7 @@ public class DragableGenerator : MonoBehaviour
         }
         startpointHoldList.Clear();
         StartCoroutine(SetDrabables());
+        StartButton.StartButtonCall -= OnRestart;
     }
 
     private void ResetStartPoint(Transform startPoint, DragObject dragable)
@@ -67,5 +68,4 @@ public class DragableGenerator : MonoBehaviour
         startpointHoldList.Add(startpointList[r]);
         startpointList.RemoveAt(r);
     }
-
 }
