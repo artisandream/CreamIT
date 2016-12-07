@@ -14,7 +14,7 @@ public class RingAsset : MonoBehaviour, IReset
     public void Start()
     {
         thisAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        RunGame.OnModGame += OnModGameHandler;
+//        RunGame.OnModGame += OnModGameHandler;
         RunGame.ResetLevel += OnReset;
         RunGame.RestartLevel += OnRestart;
     }

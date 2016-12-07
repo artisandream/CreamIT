@@ -7,7 +7,7 @@ public class RunGame : MonoBehaviour, IReset
 {
 
     public static Action<LevelObject> OnStartLevel;
-    public static Action<LevelObject> OnModGame;
+    //public static Action<LevelObject> OnModGame;
     public List<LevelObject> levelObjects;
     public LevelObject currentLevel;
     public static Action ResetLevel;
@@ -53,7 +53,7 @@ public class RunGame : MonoBehaviour, IReset
         StopAllCoroutines();
         CheckLevel();
         OnStartLevel(currentLevel);
-        StartCoroutine(ModGame());
+       // StartCoroutine(ModGame());
         RestartLevel();
     }
 
@@ -62,14 +62,14 @@ public class RunGame : MonoBehaviour, IReset
         currentLevel = levelObjects[nextLevelNum];
     }
 
-    IEnumerator ModGame()
-    {
-        int currentLevelModeCount = currentLevel.levelModCount;
-        while (currentLevelModeCount > 0)
-        {
-            yield return new WaitForSeconds(currentLevel.levelModTimeHold);
-            OnModGame(currentLevel);
-            currentLevelModeCount--;
-        }
-    }
+    // IEnumerator ModGame()
+    // {
+    //     int currentLevelModeCount = currentLevel.levelModCount;
+    //     while (currentLevelModeCount > 0)
+    //     {
+    //         yield return new WaitForSeconds(currentLevel.levelModTimeHold);
+    //         OnModGame(currentLevel);
+    //         currentLevelModeCount--;
+    //     }
+    // }
 }

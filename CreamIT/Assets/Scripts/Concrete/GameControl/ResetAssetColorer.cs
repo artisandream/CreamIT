@@ -5,10 +5,10 @@ public class ResetAssetColorer : MonoBehaviour, IReset {
 	public Animator thisAnims;
 
 	public void Start () {
-		thisAnims.SetBool("Reset", false);
-		thisAnims = GetComponent<Animator>();
-		RunGame.ResetLevel += OnReset;
-		RunGame.RestartLevel += OnRestart;
+		//thisAnims.SetBool("Reset", false);
+		//thisAnims = GetComponent<Animator>();
+		//RunGame.ResetLevel += OnReset;
+		//RunGame.RestartLevel += OnRestart;
 	}
 	
 	public virtual void OnReset()
