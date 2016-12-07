@@ -13,6 +13,8 @@ public class RunGame : MonoBehaviour, IReset
     public static Action ResetLevel;
     public static Action RestartLevel;
 
+    public static Action PlayNextLevel;
+
     public void Start()
     {
         EndGame.GameOver += OnReset;
@@ -37,7 +39,7 @@ public class RunGame : MonoBehaviour, IReset
         {
             nextLevelNum = 0;
         }
-        OnRestart();
+        PlayNextLevel();
     }
 
     int nextLevelNum = 0;

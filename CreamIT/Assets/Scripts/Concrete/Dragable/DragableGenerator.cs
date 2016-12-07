@@ -7,14 +7,14 @@ public class DragableGenerator : MonoBehaviour
 
     public List<Transform> startpointList;
     public List<Transform> startpointHoldList;
-    public List<DragObject> dragableList;
+    public List<DragableAsset> dragableList;
     public Transform dragableOffScreen;
 
     public void Start()
     {
         DragableStartPoint.SendToGenerator += AddToStartPointList;
-        DragObject.SendToGenerator += AddToDragableList;
-        DragObject.ReturnToGenerator += ResetStartPoint;
+        DragableAsset.SendToGenerator += AddToDragableList;
+        DragableAsset.ReturnToGenerator += ResetStartPoint;
         StartButton.StartButtonCall += OnRestart;
     }
 
@@ -26,10 +26,10 @@ public class DragableGenerator : MonoBehaviour
         }
         startpointHoldList.Clear();
         StartCoroutine(SetDrabables());
-        StartButton.StartButtonCall -= OnRestart;
+        //StartButton.StartButtonCall -= OnRestart;
     }
 
-    private void ResetStartPoint(Transform startPoint, DragObject dragable)
+    private void ResetStartPoint(Transform startPoint, DragableAsset dragable)
     {
         startpointHoldList.Remove(startPoint);
         startpointList.Add(startPoint);
@@ -42,7 +42,7 @@ public class DragableGenerator : MonoBehaviour
         startpointList.Add(startPoint);
     }
 
-    private void AddToDragableList(DragObject dragable)
+    private void AddToDragableList(DragableAsset dragable)
     {
         dragableList.Add(dragable);
         dragable.transform.position = dragableOffScreen.position;
@@ -60,7 +60,7 @@ public class DragableGenerator : MonoBehaviour
         }
     }
 
-    private void ResetDrabables(DragObject dragable)
+    private void ResetDrabables(DragableAsset dragable)
     {
         int r = UnityEngine.Random.Range(0, startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;

@@ -16,6 +16,7 @@ public class RingGenerator : MonoBehaviour, IReset {
 		RunGame.OnStartLevel += OnStartLevelHandler;
 		RunGame.ResetLevel += OnReset;
 		RunGame.RestartLevel += OnRestart;
+		RunGame.PlayNextLevel += OnRestart;
 	}
 
     private void OnStartLevelHandler(LevelObject obj)
