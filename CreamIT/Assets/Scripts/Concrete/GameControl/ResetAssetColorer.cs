@@ -13,11 +13,11 @@ public class ResetAssetColorer : MonoBehaviour, IReset {
 	
 	public virtual void OnReset()
     {
-        thisAnims.SetBool("Reset", true);
+        //thisAnims.SetBool("Reset", true);
     } 
 
 	public virtual void OnRestart()
     {
-        thisAnims.SetBool("Reset", false);
+        //thisAnims.SetBool("Reset", false);
     }
 }

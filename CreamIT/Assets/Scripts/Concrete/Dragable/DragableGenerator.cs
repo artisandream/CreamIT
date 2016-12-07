@@ -15,15 +15,8 @@ public class DragableGenerator : MonoBehaviour
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragObject.SendToGenerator += AddToDragableList;
         DragObject.ReturnToGenerator += ResetStartPoint;
-        //RunGame.ResetLevel += OnReset;
-        //RunGame.RestartLevel += OnRestart;
         StartButton.StartButtonCall += OnRestart;
     }
-
-    // private void OnStartGameHandler()
-    // {
-    //     StartCoroutine(SetDrabables());
-    // }
 
     public void OnRestart()
     {
@@ -32,7 +25,6 @@ public class DragableGenerator : MonoBehaviour
             startpointList.Add(point);
         }
         startpointHoldList.Clear();
-
         StartCoroutine(SetDrabables());
     }
 
@@ -41,18 +33,18 @@ public class DragableGenerator : MonoBehaviour
         startpointHoldList.Remove(startPoint);
         startpointList.Add(startPoint);
         dragable.transform.position = dragableOffScreen.position;
-        StartCoroutine(ResetDrabables(dragable));
+        ResetDrabables(dragable);
     }
 
-    private void AddToStartPointList(Transform obj)
+    private void AddToStartPointList(Transform startPoint)
     {
-        startpointList.Add(obj);
+        startpointList.Add(startPoint);
     }
 
-    private void AddToDragableList(DragObject obj)
+    private void AddToDragableList(DragObject dragable)
     {
-        dragableList.Add(obj);
-        obj.transform.position = dragableOffScreen.position;
+        dragableList.Add(dragable);
+        dragable.transform.position = dragableOffScreen.position;
     }
 
     IEnumerator SetDrabables()
@@ -62,18 +54,12 @@ public class DragableGenerator : MonoBehaviour
         while (i >= 0)
         {
             yield return new WaitForSeconds(StaticVars.appearTime);
-            SetDrabablesHandler(dragableList[i]);
+            ResetDrabables(dragableList[i]);
             i--;
         }
     }
 
-    private IEnumerator ResetDrabables(DragObject dragable)
-    {
-        yield return new WaitForSeconds(StaticVars.appearTime);
-        SetDrabablesHandler(dragable);
-    }
-
-    void SetDrabablesHandler(DragObject dragable)
+    private void ResetDrabables(DragObject dragable)
     {
         int r = UnityEngine.Random.Range(0, startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;
@@ -81,4 +67,5 @@ public class DragableGenerator : MonoBehaviour
         startpointHoldList.Add(startpointList[r]);
         startpointList.RemoveAt(r);
     }
+
 }

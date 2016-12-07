@@ -8,10 +8,9 @@ public class DragObject : MonoBehaviour
     public Transform lastStartPoint;
     public Transform StartPoint;
     private Vector3 offset;
-    
-    void Start()
+
+    private void Start()
     {
-        //RunGame.RestartLevel += OnRestart;
         SendToGenerator(this);
     }
 
@@ -20,17 +19,17 @@ public class DragObject : MonoBehaviour
         transform.position = StartPoint.localPosition;
     }
 
-    void OnMouseDown()
+    private void OnMouseDown()
     {
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    void OnMouseDrag()
+    private void OnMouseDrag()
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
     }
 
-    void OnMouseUp()
+    private void OnMouseUp()
     {
         ReturnToGenerator(lastStartPoint, this);
     }
