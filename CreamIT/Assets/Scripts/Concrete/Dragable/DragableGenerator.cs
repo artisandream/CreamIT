@@ -27,11 +27,18 @@ public class DragableGenerator : MonoBehaviour
 
     public void OnRestart()
     {
+        foreach (Transform point in startpointHoldList)
+        {
+            startpointList.Add(point);
+        }
+        startpointHoldList.Clear();
+
         StartCoroutine(SetDrabables());
     }
 
     private void ResetStartPoint(Transform startPoint, DragObject dragable)
     {
+        startpointHoldList.Remove(startPoint);
         startpointList.Add(startPoint);
         dragable.transform.position = dragableOffScreen.position;
         StartCoroutine(ResetDrabables(dragable));
@@ -50,10 +57,6 @@ public class DragableGenerator : MonoBehaviour
 
     IEnumerator SetDrabables()
     {
-        foreach (Transform point in startpointHoldList)
-        {
-            startpointList.Add(point);
-        }
         yield return new WaitForSeconds(StaticVars.appearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
@@ -77,6 +80,5 @@ public class DragableGenerator : MonoBehaviour
         dragable.lastStartPoint = startpointList[r];
         startpointHoldList.Add(startpointList[r]);
         startpointList.RemoveAt(r);
-        
     }
 }
