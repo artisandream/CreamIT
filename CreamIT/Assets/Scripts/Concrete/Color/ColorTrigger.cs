@@ -2,8 +2,7 @@
 
 public class ColorTrigger : MonoBehaviour
 {
-    public SpriteRenderer center;
-
+    public RingAsset ringAsset;
     SpriteRenderer thisRenderer;
 
     void Start()
@@ -11,12 +10,16 @@ public class ColorTrigger : MonoBehaviour
         thisRenderer = GetComponent<SpriteRenderer>();
     }
     void OnTriggerEnter(Collider _c)
-    {        
+    {
         if (_c.GetComponent<SpriteRenderer>().material.name ==
             thisRenderer.material.name)
         {
-            center.material = thisRenderer.material;
+            ringAsset.blankCenter.material = thisRenderer.material;
+            ringAsset.OnSetColor();
+        }
+        else
+        {
+            StaticVars.moveSpeed += StaticVars.addSpeed;
         }
     }
 }
-    

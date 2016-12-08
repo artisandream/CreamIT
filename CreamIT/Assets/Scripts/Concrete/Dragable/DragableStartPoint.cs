@@ -4,8 +4,14 @@ using System;
 public class DragableStartPoint : MonoBehaviour {
 
 	public static Action<Transform> SendToGenerator;
-	
-	void Start () {
+
+    public void OnRestart()
+    {
+        SendToGenerator(transform);
+    }
+
+    public void Start () {
+//		RunGame.RestartLevel += OnRestart;
 		SendToGenerator(transform);
 	}
 	

@@ -1,63 +1,71 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class DragableGenerator : MonoBehaviour
 {
 
     public List<Transform> startpointList;
-    public List<DragObject> dragableList;
+    public List<Transform> startpointHoldList;
+    public List<DragableAsset> dragableList;
     public Transform dragableOffScreen;
 
-    void Start()
+    public void Start()
     {
         DragableStartPoint.SendToGenerator += AddToStartPointList;
-        DragObject.SendToGenerator += AddToDragableList;
-        DragObject.ReturnToGenerator += ResetStartPoint;
-        StartCoroutine(SetDrabables());
+        DragableAsset.SendToGenerator += AddToDragableList;
+        DragableAsset.ReturnToGenerator += ResetStartPoint;
+        StartButton.StartButtonCall += OnRestart;
     }
 
-    private void ResetStartPoint(Transform startPoint, DragObject dragable)
+    public void OnRestart()
     {
+        foreach (Transform point in startpointHoldList)
+        {
+            startpointList.Add(point);
+        }
+        startpointHoldList.Clear();
+        StartCoroutine(SetDrabables());
+        //StartButton.StartButtonCall -= OnRestart;
+    }
+
+    private void ResetStartPoint(Transform startPoint, DragableAsset dragable)
+    {
+        startpointHoldList.Remove(startPoint);
         startpointList.Add(startPoint);
         dragable.transform.position = dragableOffScreen.position;
-        StartCoroutine(ResetDrabables(dragable));
+        ResetDrabables(dragable);
     }
 
-    private void AddToStartPointList(Transform obj)
+    private void AddToStartPointList(Transform startPoint)
     {
-        startpointList.Add(obj);
+        startpointList.Add(startPoint);
     }
 
-    private void AddToDragableList(DragObject obj)
+    private void AddToDragableList(DragableAsset dragable)
     {
-        dragableList.Add(obj);
-        obj.transform.position = dragableOffScreen.position;
+        dragableList.Add(dragable);
+        dragable.transform.position = dragableOffScreen.position;
     }
+
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(StaticVars.generateTime/2);
+        yield return new WaitForSeconds(StaticVars.appearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-			yield return new WaitForSeconds(StaticVars.generateTime/2);
-			SetDrabablesHandler(dragableList[i]);
+            yield return new WaitForSeconds(StaticVars.appearTime);
+            ResetDrabables(dragableList[i]);
             i--;
         }
     }
 
-    private IEnumerator ResetDrabables(DragObject dragable)
-    {
-		yield return new WaitForSeconds(StaticVars.generateTime/2);
-        SetDrabablesHandler(dragable);
-    }
-
-    void SetDrabablesHandler(DragObject dragable)
+    private void ResetDrabables(DragableAsset dragable)
     {
         int r = UnityEngine.Random.Range(0, startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;
         dragable.lastStartPoint = startpointList[r];
+        startpointHoldList.Add(startpointList[r]);
         startpointList.RemoveAt(r);
     }
 }
