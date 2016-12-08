@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 using System;
 
 public class RunGame : MonoBehaviour, IReset
 {
-
     public static Action<LevelObject> OnStartLevel;
-    //public static Action<LevelObject> OnModGame;
     public List<LevelObject> levelObjects;
     public LevelObject currentLevel;
     public static Action ResetLevel;
     public static Action RestartLevel;
-
     public static Action PlayNextLevel;
+    int nextLevelNum = 0;
 
     public void Start()
     {
@@ -31,7 +28,7 @@ public class RunGame : MonoBehaviour, IReset
 
     private void GoToNextLevelHandler()
     {
-        if (nextLevelNum < levelObjects.Count-1)
+        if (nextLevelNum < levelObjects.Count - 1)
         {
             nextLevelNum++;
         }
@@ -39,23 +36,25 @@ public class RunGame : MonoBehaviour, IReset
         {
             nextLevelNum = 0;
         }
+        OnPlayNextLevel();
+    }
+
+    private void OnPlayNextLevel()
+    {
+        CheckLevel();
+        OnStartLevel(currentLevel);
         PlayNextLevel();
     }
 
-    int nextLevelNum = 0;
-
     public void OnReset()
     {
-        StopAllCoroutines();
         ResetLevel();
     }
 
     public void OnRestart()
     {
-        StopAllCoroutines();
         CheckLevel();
         OnStartLevel(currentLevel);
-       // StartCoroutine(ModGame());
         RestartLevel();
     }
 
@@ -63,15 +62,4 @@ public class RunGame : MonoBehaviour, IReset
     {
         currentLevel = levelObjects[nextLevelNum];
     }
-
-    // IEnumerator ModGame()
-    // {
-    //     int currentLevelModeCount = currentLevel.levelModCount;
-    //     while (currentLevelModeCount > 0)
-    //     {
-    //         yield return new WaitForSeconds(currentLevel.levelModTimeHold);
-    //         OnModGame(currentLevel);
-    //         currentLevelModeCount--;
-    //     }
-    // }
 }
