@@ -26,7 +26,6 @@ public class DragableGenerator : MonoBehaviour
         }
         startpointHoldList.Clear();
         StartCoroutine(SetDrabables());
-        //StartButton.StartButtonCall -= OnRestart;
     }
 
     private void ResetStartPoint(Transform startPoint, DragableAsset dragable)

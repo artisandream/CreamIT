@@ -66,7 +66,6 @@ public class ColorChoices : MonoBehaviour
             case ColorChoices.AvaliableColors.Orange:
                 thisMaterial = Orange;
                 break;
-
             default:
                 thisMaterial = Red;
                 break;
