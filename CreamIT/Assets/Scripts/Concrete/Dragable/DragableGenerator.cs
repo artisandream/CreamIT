@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class DragableGenerator : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DragableGenerator : MonoBehaviour
     public List<Transform> startpointHoldList;
     public List<DragableAsset> dragableList;
     public Transform dragableOffScreen;
+    private LevelObject currentLevel;
 
     public void Start()
     {
@@ -16,6 +18,12 @@ public class DragableGenerator : MonoBehaviour
         DragableAsset.SendToGenerator += AddToDragableList;
         DragableAsset.ReturnToGenerator += ResetStartPoint;
         StartButton.StartButtonCall += OnRestart;
+        RunGame.OnStartLevel += AddCurrentLevel;
+    }
+
+    private void AddCurrentLevel(LevelObject obj)
+    {
+        currentLevel = obj;
     }
 
     public void OnRestart()
@@ -49,11 +57,11 @@ public class DragableGenerator : MonoBehaviour
 
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(StaticVars.appearTime);
+        yield return new WaitForSeconds(currentLevel.dragableAppearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-            yield return new WaitForSeconds(StaticVars.appearTime);
+            yield return new WaitForSeconds(currentLevel.dragableAppearTime);
             ResetDrabables(dragableList[i]);
             i--;
         }

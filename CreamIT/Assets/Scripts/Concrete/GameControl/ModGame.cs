@@ -10,7 +10,8 @@ public class ModGame : MonoBehaviour {
 	
 	void Start () {
 		RunGame.OnStartLevel += StartModGame;
-		RunGame.RestartLevel += StopModGame;
+		EndGame.GameOver += StopModGame;
+		//NextLevel.GoToNextLevel += StopModGame;
 	}
 
     private void StopModGame()
@@ -20,13 +21,13 @@ public class ModGame : MonoBehaviour {
 
     private void StartModGame(LevelObject obj)
     {
-		print("Start");
         currentLevel = obj;
+		StartCoroutine(ChangeSpeed());
     }
 
     IEnumerator ChangeSpeed () {
-		print("Mod");
-		yield return new WaitForSeconds(currentLevel.levelModTimeHold);
+		yield return new WaitForSeconds(1);
 		ModSpeed(currentLevel.ringAddSpeed);
+		StartCoroutine(ChangeSpeed());
 	}
 }

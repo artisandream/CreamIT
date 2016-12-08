@@ -5,6 +5,7 @@ using System;
 public class RunGame : MonoBehaviour, IReset
 {
     public static Action<LevelObject> OnStartLevel;
+    public static Action<float> SetSpeed;
     public List<LevelObject> levelObjects;
     public LevelObject currentLevel;
     public static Action ResetLevel;
@@ -24,6 +25,7 @@ public class RunGame : MonoBehaviour, IReset
     {
         nextLevelNum = 0;
         OnRestart();
+        SetSpeed(currentLevel.ringMoveSpeed);
     }
 
     private void GoToNextLevelHandler()
