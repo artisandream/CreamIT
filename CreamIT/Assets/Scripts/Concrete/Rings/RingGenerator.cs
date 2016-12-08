@@ -23,7 +23,7 @@ public class RingGenerator : MonoBehaviour, IReset {
 
     private void ModGeneratorSpeed(float obj)
     {
-        throw new NotImplementedException();
+//        throw new NotImplementedException();
     }
 
     private void OnStartLevelHandler(LevelObject obj)

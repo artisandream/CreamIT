@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class DragableGenerator : MonoBehaviour
 {
@@ -57,11 +56,11 @@ public class DragableGenerator : MonoBehaviour
 
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(currentLevel.dragableAppearTime);
+        yield return new WaitForSeconds(.2f);//currentLevel.dragableAppearTime
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-            yield return new WaitForSeconds(currentLevel.dragableAppearTime);
+            yield return new WaitForSeconds(0.2f);//currentLevel.dragableAppearTime
             ResetDrabables(dragableList[i]);
             i--;
         }
