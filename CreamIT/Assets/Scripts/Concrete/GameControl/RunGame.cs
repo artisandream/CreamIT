@@ -4,64 +4,66 @@ using System;
 
 public class RunGame : MonoBehaviour, IReset
 {
-    public static Action<LevelObject> OnStartLevel;
+    public static Action OnStartWave;
     public static Action<float> SetSpeed;
-    public List<LevelObject> levelObjects;
-    public LevelObject currentLevel;
-    public static Action ResetLevel;
-    public static Action RestartLevel;
-    public static Action PlayNextLevel;
-    int nextLevelNum = 0;
+    public List<WaveObject> waveObjects;
+    public static Action ResetWave;
+    public static Action RestartWave;
+    public static Action PlayNextWave;
+    int nextWaveNum = 0;
 
     public void Start()
     {
         EndGame.GameOver += OnReset;
         StartButton.StartButtonCall += OnStartButton;
-        NextLevel.GoToNextLevel += GoToNextLevelHandler;
-        Invoke("CheckLevel", 0.01f);
+        NextWave.GoToNextWave += GoToNextWaveHandler;
+        CheckWave();
+        Invoke("CheckWave", 0.01f);
     }
 
     private void OnStartButton()
     {
-        nextLevelNum = 0;
+        nextWaveNum = 0;
         OnRestart();
-        SetSpeed(currentLevel.ringMoveSpeed);
+        SetSpeed(StaticFunctions.SetSpeed(StaticFunctions.currentWave.ringMoveSpeed));
+        StaticFunctions.SetGenTime(StaticFunctions.currentWave.ringGenerateTime);
     }
 
-    private void GoToNextLevelHandler()
+    private void GoToNextWaveHandler()
     {
-        if (nextLevelNum < levelObjects.Count - 1)
+        if (nextWaveNum < waveObjects.Count - 1)
         {
-            nextLevelNum++;
+            nextWaveNum++;
         }
         else
         {
-            nextLevelNum = 0;
+            nextWaveNum = 0;
         }
-        OnPlayNextLevel();
+        print(StaticFunctions.currentWave);
+        OnPlayNextWave();
     }
 
-    private void OnPlayNextLevel()
+    private void OnPlayNextWave()
     {
-        CheckLevel();
-        OnStartLevel(currentLevel);
-        PlayNextLevel();
+        CheckWave();
+        OnStartWave();
+        PlayNextWave();
     }
 
     public void OnReset()
     {
-        ResetLevel();
+        ResetWave();
     }
 
     public void OnRestart()
     {
-        CheckLevel();
-        OnStartLevel(currentLevel);
-        RestartLevel();
+        CheckWave();
+        OnStartWave();
+        RestartWave();
     }
 
-    private void CheckLevel()
+    private void CheckWave()
     {
-        currentLevel = levelObjects[nextLevelNum];
+        StaticFunctions.currentWave = waveObjects[nextWaveNum];
     }
 }

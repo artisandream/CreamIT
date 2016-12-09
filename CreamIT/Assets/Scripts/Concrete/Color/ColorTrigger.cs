@@ -4,7 +4,6 @@ public class ColorTrigger : MonoBehaviour
 {
     public RingAsset ringAsset;
     public static Action<float> AddSpeedOnTrigger;
-        public float AddedSpeed = 0.1f;
 
     SpriteRenderer thisRenderer;
 
@@ -17,12 +16,15 @@ public class ColorTrigger : MonoBehaviour
         if (_c.GetComponent<SpriteRenderer>().material.name ==
             thisRenderer.material.name)
         {
-            ringAsset.blankCenter.material = thisRenderer.material;
+            ringAsset.blankCenter.material =
+                thisRenderer.material;
             ringAsset.OnSetColor();
         }
         else
         {
-            AddSpeedOnTrigger(AddedSpeed);
+            AddSpeedOnTrigger(
+                StaticFunctions.ChangeSpeed(
+                    StaticFunctions.currentWave.ringAddSpeed));
         }
     }
 }

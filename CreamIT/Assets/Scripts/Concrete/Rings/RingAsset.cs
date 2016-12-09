@@ -14,21 +14,16 @@ public class RingAsset : MonoBehaviour, IReset
     public void Start()
     {
         thisAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        ModGame.ModSpeed += OnModGameHandler;
-        ColorTrigger.AddSpeedOnTrigger += OnModGameHandler;
-        RunGame.ResetLevel += OnReset;
-        RunGame.RestartLevel += OnRestart;
+        ColorTrigger.AddSpeedOnTrigger += ResetSpeed;
+        RunGame.ResetWave += OnReset;
+        RunGame.RestartWave += OnRestart;
         RunGame.SetSpeed += ResetSpeed;
+        ModGame.ModSpeed += ResetSpeed;
     }
 
     private void ResetSpeed(float obj)
     {
         thisAgent.speed = obj;
-    }
-
-    private void OnModGameHandler(float _addSpeed)
-    {
-        thisAgent.speed += _addSpeed;
     }
 
     public void OnSet(Transform destination)

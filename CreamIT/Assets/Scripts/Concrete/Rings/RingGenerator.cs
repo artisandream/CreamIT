@@ -1,35 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 public class RingGenerator : MonoBehaviour, IReset {
 
 	private int ringCount;
 	public Transform rignRelocation;
+	public List<Transform> RingStartPoints;
 	public Transform destination;
-	private LevelObject currentLevel;
 	public List<RingAsset> RingAssetList;
 	
 
 	public void Start () {
+		RingStartPoint.SendRingStartPoint += SendRingStartPointHandler;
 		RingAsset.SendToGenerator += AddToList;
-		RunGame.OnStartLevel += OnStartLevelHandler;
-		RunGame.ResetLevel += OnReset;
-		RunGame.RestartLevel += OnRestart;
-		RunGame.PlayNextLevel += OnRestart;
+		RunGame.OnStartWave += OnStartWaveHandler;
+		RunGame.ResetWave += OnReset;
+		RunGame.RestartWave += OnRestart;
+		RunGame.PlayNextWave += OnRestart;
 		ModGame.ModSpeed += ModGeneratorSpeed;
 	}
+
+    private void SendRingStartPointHandler(Transform obj)
+    {
+        RingStartPoints.Add(obj);
+    }
 
     private void ModGeneratorSpeed(float obj)
     {
 //        throw new NotImplementedException();
     }
 
-    private void OnStartLevelHandler(LevelObject obj)
+    private void OnStartWaveHandler()
     {
-        currentLevel = obj;
-		ringCount = currentLevel.ringCount;
+		ringCount = StaticFunctions.currentWave.ringCount;
     }
 
     public void OnReset()
@@ -46,8 +50,9 @@ public class RingGenerator : MonoBehaviour, IReset {
 
     IEnumerator RecycleRings () {
 		while(ringCount > 0){
-			yield return new WaitForSeconds(currentLevel.ringGenerateTime);
-			RingAssetList[0].transform.position = transform.position;
+			yield return new WaitForSeconds(StaticFunctions.currentWave.ringGenerateTime);
+			RingAssetList[0].transform.position = 
+				RingStartPoints[StaticFunctions.RandomNumber(RingStartPoints.Count-1)].position;
 			RingAssetList[0].OnSet(destination);
 			RingAssetList.RemoveAt(0);
 			ringCount--;
@@ -56,7 +61,7 @@ public class RingGenerator : MonoBehaviour, IReset {
 
     public void OnRestart()
     {
-		ringCount = currentLevel.ringCount;
+		ringCount = StaticFunctions.currentWave.ringCount;
         StartCoroutine(RecycleRings());
     }
 }

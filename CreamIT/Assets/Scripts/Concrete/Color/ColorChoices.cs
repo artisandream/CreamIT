@@ -35,7 +35,7 @@ public class ColorChoices : MonoBehaviour
     {
         Array values = Enum.GetValues(typeof(ColorChoices.AvaliableColors));
         thisColor =
-        (ColorChoices.AvaliableColors)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+        (ColorChoices.AvaliableColors)values.GetValue(StaticFunctions.RandomNumber(values.Length));
         return ChangeMaterial();
     }
     public Material ChangeMaterial()

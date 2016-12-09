@@ -5,13 +5,13 @@ using UnityEngine;
 public class ModGame : MonoBehaviour {
 
 	public static Action<float> ModSpeed;
+	public static Action<float> ModGenTime;
+	public float newSpeed;
+	public float newGenTime;
 
-	private LevelObject currentLevel;
-	
 	void Start () {
-		RunGame.OnStartLevel += StartModGame;
+		RunGame.OnStartWave += StartModGame;
 		EndGame.GameOver += StopModGame;
-		//NextLevel.GoToNextLevel += StopModGame;
 	}
 
     private void StopModGame()
@@ -19,15 +19,19 @@ public class ModGame : MonoBehaviour {
         StopAllCoroutines();
     }
 
-    private void StartModGame(LevelObject obj)
+    private void StartModGame()
     {
-        currentLevel = obj;
+		newSpeed = StaticFunctions.currentWave.ringMoveSpeed;
 		StartCoroutine(ChangeSpeed());
     }
 
     IEnumerator ChangeSpeed () {
-		yield return new WaitForSeconds(1);
-		ModSpeed(currentLevel.ringAddSpeed);
+		yield return new WaitForSeconds(StaticFunctions.currentWave.levelModTimeHold);
+		newSpeed = StaticFunctions.ChangeSpeed(StaticFunctions.currentWave.ringAddSpeed);
+		if(newGenTime > 0.1f)
+			newGenTime -= StaticFunctions.ChangeGenTime(StaticFunctions.currentWave.ringAddSpeed);
+		
+		ModSpeed(newSpeed);
 		StartCoroutine(ChangeSpeed());
 	}
 }

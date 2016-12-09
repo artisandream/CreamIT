@@ -9,21 +9,15 @@ public class DragableGenerator : MonoBehaviour
     public List<Transform> startpointHoldList;
     public List<DragableAsset> dragableList;
     public Transform dragableOffScreen;
-    private LevelObject currentLevel;
 
     public void Start()
     {
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragableAsset.SendToGenerator += AddToDragableList;
         DragableAsset.ReturnToGenerator += ResetStartPoint;
-        StartButton.StartButtonCall += OnRestart;
-        RunGame.OnStartLevel += AddCurrentLevel;
+        RunGame.RestartWave += OnRestart;
     }
 
-    private void AddCurrentLevel(LevelObject obj)
-    {
-        currentLevel = obj;
-    }
 
     public void OnRestart()
     {
@@ -56,11 +50,11 @@ public class DragableGenerator : MonoBehaviour
 
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(.2f);//currentLevel.dragableAppearTime
+        yield return new WaitForSeconds(StaticFunctions.currentWave.dragableAppearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-            yield return new WaitForSeconds(0.2f);//currentLevel.dragableAppearTime
+            yield return new WaitForSeconds(StaticFunctions.currentWave.dragableAppearTime);
             ResetDrabables(dragableList[i]);
             i--;
         }
@@ -68,7 +62,7 @@ public class DragableGenerator : MonoBehaviour
 
     private void ResetDrabables(DragableAsset dragable)
     {
-        int r = UnityEngine.Random.Range(0, startpointList.Count - 1);
+        int r = StaticFunctions.RandomNumber(startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;
         dragable.lastStartPoint = startpointList[r];
         startpointHoldList.Add(startpointList[r]);
