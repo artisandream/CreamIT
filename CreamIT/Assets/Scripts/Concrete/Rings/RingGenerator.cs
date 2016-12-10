@@ -10,11 +10,9 @@ public class RingGenerator : MonoBehaviour, IReset {
 	public Transform destination;
 	public List<RingAsset> RingAssetList;
 	
-
 	public void Start () {
 		RingStartPoint.SendRingStartPoint += SendRingStartPointHandler;
 		RingAsset.SendToGenerator += AddToList;
-		RunGame.OnStartWave += OnStartWaveHandler;
 		RunGame.ResetWave += OnReset;
 		RunGame.RestartWave += OnRestart;
 		RunGame.PlayNextWave += OnRestart;
@@ -25,12 +23,7 @@ public class RingGenerator : MonoBehaviour, IReset {
         RingStartPoints.Add(obj);
     }
 
-    private void OnStartWaveHandler()
-    {
-		ringCount = StaticFunctions.currentWave.ringCount + StaticFunctions.addedRingCount;
-    }
-
-    public void OnReset()
+    public void OnReset(bool _bool)
     {
 		StopAllCoroutines();
 		RingAssetList.Clear();	
