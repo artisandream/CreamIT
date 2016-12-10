@@ -39,7 +39,6 @@ public class RunGame : MonoBehaviour, IReset
         {
             nextWaveNum = 0;
         }
-        print(StaticFunctions.currentWave);
         OnPlayNextWave();
     }
 

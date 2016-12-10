@@ -2,36 +2,45 @@
 using System.Collections;
 using UnityEngine;
 
-public class ModGame : MonoBehaviour {
+public class ModGame : MonoBehaviour
+{
 
-	public static Action<float> ModSpeed;
-	public static Action<float> ModGenTime;
-	public float newSpeed;
-	public float newGenTime;
-
-	void Start () {
+    public static Action<float> ModSpeed;
+    public static Action<float> ModGenTime;
+    public float newSpeed;
+    public float newGenTime;
+    public float modNum;
+    void Start()
+    {
+        NextWave.GoToNextWave += StartModGame;
 		RunGame.OnStartWave += StartModGame;
-		EndGame.GameOver += StopModGame;
-	}
+        EndGame.GameOver += StopModGame;
+    }
 
     private void StopModGame()
     {
-        StopAllCoroutines();
+		StaticFunctions.addedRingCount = 0;
     }
 
     private void StartModGame()
     {
-		newSpeed = StaticFunctions.currentWave.ringMoveSpeed;
-		StartCoroutine(ChangeSpeed());
+		print("call");
+		StaticFunctions.addedRingCount++;
+        newSpeed = StaticFunctions.currentWave.ringMoveSpeed;
+        StartCoroutine(ChangeSpeed());
     }
 
-    IEnumerator ChangeSpeed () {
-		yield return new WaitForSeconds(StaticFunctions.currentWave.levelModTimeHold);
-		newSpeed = StaticFunctions.ChangeSpeed(StaticFunctions.currentWave.ringAddSpeed);
-		if(newGenTime > 0.1f)
-			newGenTime -= StaticFunctions.ChangeGenTime(StaticFunctions.currentWave.ringAddSpeed);
-		
-		ModSpeed(newSpeed);
-		StartCoroutine(ChangeSpeed());
-	}
+    IEnumerator ChangeSpeed()
+    {
+        modNum = StaticFunctions.currentWave.waveModCount;
+        while (modNum > 0)
+        {
+	        yield return new WaitForSeconds(StaticFunctions.currentWave.waveModTimeHold);
+            newSpeed = StaticFunctions.ChangeSpeed(StaticFunctions.currentWave.ringAddSpeed);
+            newGenTime = StaticFunctions.currentWave.ringGenerateTime;
+            StaticFunctions.ChangeGenTime(StaticFunctions.currentWave.ringAddSpeed);
+            modNum--;
+        }
+		print("done");
+    }
 }

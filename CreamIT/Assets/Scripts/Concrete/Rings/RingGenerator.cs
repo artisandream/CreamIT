@@ -18,7 +18,6 @@ public class RingGenerator : MonoBehaviour, IReset {
 		RunGame.ResetWave += OnReset;
 		RunGame.RestartWave += OnRestart;
 		RunGame.PlayNextWave += OnRestart;
-		ModGame.ModSpeed += ModGeneratorSpeed;
 	}
 
     private void SendRingStartPointHandler(Transform obj)
@@ -26,14 +25,10 @@ public class RingGenerator : MonoBehaviour, IReset {
         RingStartPoints.Add(obj);
     }
 
-    private void ModGeneratorSpeed(float obj)
-    {
-//        throw new NotImplementedException();
-    }
-
     private void OnStartWaveHandler()
     {
-		ringCount = StaticFunctions.currentWave.ringCount;
+		ringCount = StaticFunctions.currentWave.ringCount + StaticFunctions.addedRingCount;
+		print(ringCount);
     }
 
     public void OnReset()
@@ -50,7 +45,7 @@ public class RingGenerator : MonoBehaviour, IReset {
 
     IEnumerator RecycleRings () {
 		while(ringCount > 0){
-			yield return new WaitForSeconds(StaticFunctions.currentWave.ringGenerateTime);
+			yield return new WaitForSeconds(StaticFunctions.ringGenerateTime);
 			RingAssetList[0].transform.position = 
 				RingStartPoints[StaticFunctions.RandomNumber(RingStartPoints.Count-1)].position;
 			RingAssetList[0].OnSet(destination);
