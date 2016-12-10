@@ -8,26 +8,27 @@ public class RingAsset : MonoBehaviour, IReset
     public Material black;
     public GameObject ender;
     public GameObject recycler;
-	public Animator animator;
+    public Animator animator;
 
     private UnityEngine.AI.NavMeshAgent thisAgent;
     public void Start()
     {
         thisAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-//        RunGame.OnModGame += OnModGameHandler;
-        RunGame.ResetLevel += OnReset;
-        RunGame.RestartLevel += OnRestart;
+        ColorTrigger.AddSpeedOnTrigger += ResetSpeed;
+        RunGame.ResetWave += OnReset;
+        RunGame.RestartWave += OnRestart;
+        RunGame.SetSpeed += ResetSpeed;
+        RunGame.OnModSpeed += ResetSpeed;
     }
 
-    private void OnModGameHandler(LevelObject currentLevel)
+    private void ResetSpeed(float obj)
     {
-        thisAgent.speed = currentLevel.ringMoveSpeed += currentLevel.ringAddSpeed;
+        thisAgent.speed = obj;
     }
 
-    public void OnSet(Transform destination, LevelObject currentLevel)
+    public void OnSet(Transform destination)
     {
         thisAgent.destination = destination.position;
-        thisAgent.speed = currentLevel.ringMoveSpeed;
         thisAgent.Resume();
     }
 
@@ -44,12 +45,12 @@ public class RingAsset : MonoBehaviour, IReset
 
     public void OnRestart()
     {
-		blankCenter.material = black;
+        blankCenter.material = black;
         StopAgent();
         SendToGenerator(this);
         ender.SetActive(true);
         recycler.SetActive(false);
-		animator.SetBool("Reset", false);
+        animator.SetBool("Reset", false);
     }
 
     public void OnReset()

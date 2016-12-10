@@ -15,8 +15,8 @@ public class DragableAsset : MonoBehaviour
         SendToGenerator(this);
         thisAnims = GetComponent<Animator>();
         thisAnims.SetBool("Reset", false);
-		RunGame.ResetLevel += OnReset;
-		RunGame.RestartLevel += OnRestart;
+		RunGame.ResetWave += OnReset;
+		RunGame.RestartWave += OnRestart;
     }
 	
 	public virtual void OnReset()

@@ -15,8 +15,9 @@ public class DragableGenerator : MonoBehaviour
         DragableStartPoint.SendToGenerator += AddToStartPointList;
         DragableAsset.SendToGenerator += AddToDragableList;
         DragableAsset.ReturnToGenerator += ResetStartPoint;
-        StartButton.StartButtonCall += OnRestart;
+        RunGame.RestartWave += OnRestart;
     }
+
 
     public void OnRestart()
     {
@@ -49,11 +50,11 @@ public class DragableGenerator : MonoBehaviour
 
     IEnumerator SetDrabables()
     {
-        yield return new WaitForSeconds(StaticVars.appearTime);
+        yield return new WaitForSeconds(StaticFunctions.currentWave.dragableAppearTime);
         int i = dragableList.Count - 1;
         while (i >= 0)
         {
-            yield return new WaitForSeconds(StaticVars.appearTime);
+            yield return new WaitForSeconds(StaticFunctions.currentWave.dragableAppearTime);
             ResetDrabables(dragableList[i]);
             i--;
         }
@@ -61,7 +62,7 @@ public class DragableGenerator : MonoBehaviour
 
     private void ResetDrabables(DragableAsset dragable)
     {
-        int r = UnityEngine.Random.Range(0, startpointList.Count - 1);
+        int r = StaticFunctions.RandomNumber(startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;
         dragable.lastStartPoint = startpointList[r];
         startpointHoldList.Add(startpointList[r]);

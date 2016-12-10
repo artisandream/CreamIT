@@ -1,65 +1,91 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
-public class RunGame : MonoBehaviour, IReset
+public class RunGame : MonoBehaviour
 {
-    public static Action<LevelObject> OnStartLevel;
-    public List<LevelObject> levelObjects;
-    public LevelObject currentLevel;
-    public static Action ResetLevel;
-    public static Action RestartLevel;
-    public static Action PlayNextLevel;
-    int nextLevelNum = 0;
+    public static Action OnStartWave;
+    public static Action<float> SetSpeed;
+    public List<WaveObject> WaveObjectList;
+    public static Action<float> OnModSpeed;
+    public static Action ResetWave;
+    public static Action RestartWave;
+    public static Action PlayNextWave;
+    int nextWaveNum = 0;
+
+    public float newSpeed;
+    public float newGenTime;
+    public float modNum;
 
     public void Start()
     {
-        EndGame.GameOver += OnReset;
         StartButton.StartButtonCall += OnStartButton;
-        NextLevel.GoToNextLevel += GoToNextLevelHandler;
-        Invoke("CheckLevel", 0.01f);
+        CheckWave();
+        Invoke("CheckWave", 0.01f);
+        NextWave.GoToNextWave += StartModGame;
+        NextWave.GoToNextWave += GoToNextWaveHandler;
+        EndGame.GameOver += OnReset;
     }
 
     private void OnStartButton()
     {
-        nextLevelNum = 0;
-        OnRestart();
+        nextWaveNum = 0;
+        OnRestart(RestartWave);
     }
-
-    private void GoToNextLevelHandler()
+    
+    private void GoToNextWaveHandler()
     {
-        if (nextLevelNum < levelObjects.Count - 1)
+        if (nextWaveNum < WaveObjectList.Count - 1)
         {
-            nextLevelNum++;
+            nextWaveNum++;
         }
         else
         {
-            nextLevelNum = 0;
+            nextWaveNum = 0;
         }
-        OnPlayNextLevel();
-    }
-
-    private void OnPlayNextLevel()
-    {
-        CheckLevel();
-        OnStartLevel(currentLevel);
-        PlayNextLevel();
+        OnRestart(PlayNextWave);
     }
 
     public void OnReset()
     {
-        ResetLevel();
+        ResetWave();
+        StaticFunctions.addedRingCount = 0;
     }
 
-    public void OnRestart()
+    public void OnRestart(Action SendAction)
     {
-        CheckLevel();
-        OnStartLevel(currentLevel);
-        RestartLevel();
+        CheckWave();
+        SetSpeed(StaticFunctions.SetSpeed());
+        StaticFunctions.SetGenTime(StaticFunctions.currentWave.ringGenerateTime);
+        OnStartWave();
+        StartModGame();
+        SendAction();
     }
 
-    private void CheckLevel()
+    private void CheckWave()
     {
-        currentLevel = levelObjects[nextLevelNum];
+        StaticFunctions.currentWave = WaveObjectList[nextWaveNum];
+    }
+
+    private void StartModGame()
+    {
+        StartCoroutine(ModSpeed());
+    }
+
+    IEnumerator ModSpeed()
+    {
+        StaticFunctions.addedRingCount++;
+        newSpeed = StaticFunctions.currentWave.ringMoveSpeed;
+        modNum = StaticFunctions.currentWave.waveModCount;
+        while (modNum > 0)
+        {
+	        yield return new WaitForSeconds(StaticFunctions.currentWave.waveModTimeHold);
+            newSpeed = StaticFunctions.OnModSpeed();
+            newGenTime = StaticFunctions.currentWave.ringGenerateTime;
+            StaticFunctions.ChangeGenTime();
+            modNum--;
+            OnModSpeed(newSpeed);
+        }
     }
 }
