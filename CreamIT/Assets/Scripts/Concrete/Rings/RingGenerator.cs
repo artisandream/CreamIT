@@ -6,50 +6,56 @@ public class RingGenerator : MonoBehaviour, IReset {
 
 	private int ringCount;
 	public Transform rignRelocation;
+	public List<Transform> RingStartPoints;
 	public Transform destination;
-	private LevelObject currentLevel;
-	public List<RingAsset> RecycleList;
+	public List<RingAsset> RingAssetList;
 	
 
 	public void Start () {
+		RingStartPoint.SendRingStartPoint += SendRingStartPointHandler;
 		RingAsset.SendToGenerator += AddToList;
-		RunGame.OnStartLevel += OnStartLevelHandler;
-		RunGame.ResetLevel += OnReset;
-		RunGame.RestartLevel += OnRestart;
-		RunGame.PlayNextLevel += OnRestart;
+		RunGame.OnStartWave += OnStartWaveHandler;
+		RunGame.ResetWave += OnReset;
+		RunGame.RestartWave += OnRestart;
+		RunGame.PlayNextWave += OnRestart;
 	}
 
-    private void OnStartLevelHandler(LevelObject obj)
+    private void SendRingStartPointHandler(Transform obj)
     {
-        currentLevel = obj;
-		ringCount = currentLevel.ringCount;
+        RingStartPoints.Add(obj);
+    }
+
+    private void OnStartWaveHandler()
+    {
+		ringCount = StaticFunctions.currentWave.ringCount + StaticFunctions.addedRingCount;
     }
 
     public void OnReset()
     {
 		StopAllCoroutines();
-		RecycleList.Clear();	
+		RingAssetList.Clear();	
     }
 
     private void AddToList(RingAsset obj)
     {
-        RecycleList.Add(obj);
+        RingAssetList.Add(obj);
 		obj.transform.position = rignRelocation.position;
 	}
 
-    IEnumerator RecycleColors () {
+    IEnumerator RecycleRings () {
 		while(ringCount > 0){
-			yield return new WaitForSeconds(StaticVars.generateTime);
-			RecycleList[0].transform.position = transform.position;
-			RecycleList[0].OnSet(destination, currentLevel);
-			RecycleList.RemoveAt(0);
+			yield return new WaitForSeconds(StaticFunctions.ringGenerateTime);
+			RingAssetList[0].transform.position = 
+				RingStartPoints[StaticFunctions.RandomNumber(RingStartPoints.Count-1)].position;
+			RingAssetList[0].OnSet(destination);
+			RingAssetList.RemoveAt(0);
 			ringCount--;
 		}
 	}
 
     public void OnRestart()
     {
-		ringCount = currentLevel.ringCount;
-        StartCoroutine(RecycleColors());
+		ringCount = StaticFunctions.currentWave.ringCount;
+        StartCoroutine(RecycleRings());
     }
 }

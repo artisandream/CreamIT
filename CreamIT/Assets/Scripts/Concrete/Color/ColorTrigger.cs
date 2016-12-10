@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-
+using System;
 public class ColorTrigger : MonoBehaviour
 {
     public RingAsset ringAsset;
+    public static Action<float> AddSpeedOnTrigger;
+
     SpriteRenderer thisRenderer;
 
     void Start()
@@ -14,12 +16,13 @@ public class ColorTrigger : MonoBehaviour
         if (_c.GetComponent<SpriteRenderer>().material.name ==
             thisRenderer.material.name)
         {
-            ringAsset.blankCenter.material = thisRenderer.material;
+            ringAsset.blankCenter.material =
+                thisRenderer.material;
             ringAsset.OnSetColor();
         }
         else
         {
-            StaticVars.moveSpeed += StaticVars.addSpeed;
+            AddSpeedOnTrigger(StaticFunctions.OnModSpeed());
         }
     }
 }
