@@ -28,7 +28,6 @@ public class RingGenerator : MonoBehaviour, IReset {
     private void OnStartWaveHandler()
     {
 		ringCount = StaticFunctions.currentWave.ringCount + StaticFunctions.addedRingCount;
-		print(ringCount);
     }
 
     public void OnReset()

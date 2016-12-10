@@ -18,7 +18,7 @@ public class RingAsset : MonoBehaviour, IReset
         RunGame.ResetWave += OnReset;
         RunGame.RestartWave += OnRestart;
         RunGame.SetSpeed += ResetSpeed;
-        ModGame.ModSpeed += ResetSpeed;
+        RunGame.OnModSpeed += ResetSpeed;
     }
 
     private void ResetSpeed(float obj)

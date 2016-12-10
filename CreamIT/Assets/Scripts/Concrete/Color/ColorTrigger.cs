@@ -22,9 +22,7 @@ public class ColorTrigger : MonoBehaviour
         }
         else
         {
-            AddSpeedOnTrigger(
-                StaticFunctions.ChangeSpeed(
-                    StaticFunctions.currentWave.ringAddSpeed));
+            AddSpeedOnTrigger(StaticFunctions.OnModSpeed());
         }
     }
 }

@@ -7,6 +7,7 @@ public class StaticFunctions : MonoBehaviour
     public static float currentSpeed;
     public static float ringGenerateTime;
 	public static int addedRingCount;
+	
     public static int RandomNumber(int _totalAvaliable)
     {
         return Random.Range(0, _totalAvaliable);
@@ -17,11 +18,11 @@ public class StaticFunctions : MonoBehaviour
         return ringGenerateTime = newTime;
     }
 
-    public static float ChangeGenTime(float newTime)
+    public static float ChangeGenTime()
     {
         if (ringGenerateTime > 0.1f)
         {
-            return ringGenerateTime -= newTime;
+            return ringGenerateTime -= currentWave.ringAddSpeed;
         }
         else
         {
@@ -29,12 +30,13 @@ public class StaticFunctions : MonoBehaviour
         }
 
     }
-    public static float SetSpeed(float newSpeed)
+    public static float SetSpeed()
     {
-        return currentSpeed = newSpeed;
+        return currentSpeed = currentWave.ringMoveSpeed;
     }
-    public static float ChangeSpeed(float addedSpeed)
+	
+    public static float OnModSpeed()
     {
-        return currentSpeed += addedSpeed;
+        return currentSpeed += currentWave.ringAddSpeed;
     }
 }
