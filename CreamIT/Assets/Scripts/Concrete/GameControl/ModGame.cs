@@ -24,7 +24,6 @@ public class ModGame : MonoBehaviour
 
     private void StartModGame()
     {
-		print("call");
 		StaticFunctions.addedRingCount++;
         newSpeed = StaticFunctions.currentWave.ringMoveSpeed;
         StartCoroutine(ChangeSpeed());
@@ -41,6 +40,5 @@ public class ModGame : MonoBehaviour
             StaticFunctions.ChangeGenTime(StaticFunctions.currentWave.ringAddSpeed);
             modNum--;
         }
-		print("done");
     }
 }

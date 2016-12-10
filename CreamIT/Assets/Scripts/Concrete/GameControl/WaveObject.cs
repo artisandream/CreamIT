@@ -11,6 +11,6 @@ public class WaveObject : MonoBehaviour
     public float dragableAppearTime = 0.2f;
 
     //Wave Mods
-    public int waveModTimeHold = 3;
-    public int waveModCount = 10;
+    public int waveModTimeHold = 5;
+    public int waveModCount = 3;
 }

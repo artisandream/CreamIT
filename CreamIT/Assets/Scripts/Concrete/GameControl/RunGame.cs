@@ -25,8 +25,7 @@ public class RunGame : MonoBehaviour, IReset
     {
         nextWaveNum = 0;
         OnRestart();
-        SetSpeed(StaticFunctions.SetSpeed(StaticFunctions.currentWave.ringMoveSpeed));
-        StaticFunctions.SetGenTime(StaticFunctions.currentWave.ringGenerateTime);
+        
     }
 
     private void GoToNextWaveHandler()
