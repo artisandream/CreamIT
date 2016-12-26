@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System;
 public class RingAsset : MonoBehaviour, IReset
 {
@@ -8,9 +9,9 @@ public class RingAsset : MonoBehaviour, IReset
     public Material black;
     public GameObject ender;
     public GameObject recycler;
-    public Animator animator;
+    public Animator thisAnimator;
 
-    private UnityEngine.AI.NavMeshAgent thisAgent;
+    private NavMeshAgent thisAgent;
     public void Start()
     {
         thisAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -50,11 +51,18 @@ public class RingAsset : MonoBehaviour, IReset
         SendToGenerator(this);
         ender.SetActive(true);
         recycler.SetActive(false);
-        animator.SetBool("Reset", false);
+        OnReset(false);
+        print("restart");
     }
 
-    public void OnReset()
+    public void OnWin()
     {
-        animator.SetBool("Reset", true);
+        thisAnimator.SetBool("Win", true);
+    }
+
+    public void OnReset(bool _bool)
+    {
+        thisAnimator.SetBool("Reset", _bool);
+        thisAnimator.SetBool("Win", _bool);
     }
 }

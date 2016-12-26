@@ -6,6 +6,6 @@ public class RingRecycle : MonoBehaviour {
 	
 	void OnTriggerEnter()
 	{
-		ringAsset.OnRestart();
+		ringAsset.OnWin();
 	}
 }
