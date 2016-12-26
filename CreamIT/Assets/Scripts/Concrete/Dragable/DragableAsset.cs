@@ -14,19 +14,19 @@ public class DragableAsset : MonoBehaviour
     {
         SendToGenerator(this);
         thisAnims = GetComponent<Animator>();
-        thisAnims.SetBool("Reset", false);
+        OnReset(false);
 		RunGame.ResetWave += OnReset;
 		RunGame.RestartWave += OnRestart;
     }
 	
-	public virtual void OnReset()
+	public virtual void OnReset(bool _bool)
     {
-        thisAnims.SetBool("Reset", true);
+        thisAnims.SetBool("Reset", _bool);
     } 
 
     private void OnRestart()
     {
-        thisAnims.SetBool("Reset", false);
+        OnReset(false);
         transform.position = StartPoint.localPosition;
     }
 
