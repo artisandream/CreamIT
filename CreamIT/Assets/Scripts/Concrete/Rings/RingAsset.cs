@@ -9,7 +9,7 @@ public class RingAsset : MonoBehaviour, IReset
     public Material black;
     public GameObject ender;
     public GameObject recycler;
-    public Animator animator;
+    public Animator thisAnimator;
 
     private NavMeshAgent thisAgent;
     public void Start()
@@ -52,10 +52,17 @@ public class RingAsset : MonoBehaviour, IReset
         ender.SetActive(true);
         recycler.SetActive(false);
         OnReset(false);
+        print("restart");
+    }
+
+    public void OnWin()
+    {
+        thisAnimator.SetBool("Win", true);
     }
 
     public void OnReset(bool _bool)
     {
-        animator.SetBool("Reset", _bool);
+        thisAnimator.SetBool("Reset", _bool);
+        thisAnimator.SetBool("Win", _bool);
     }
 }
