@@ -9,7 +9,7 @@ public class RunGame : MonoBehaviour
     public static Action<float> SetSpeed;
     public List<WaveObject> WaveObjectList;
     public static Action<float> OnModSpeed;
-    public static Action ResetWave;
+    public static Action<bool> ResetWave;
     public static Action RestartWave;
     public static Action PlayNextWave;
     int nextWaveNum = 0;
@@ -49,7 +49,7 @@ public class RunGame : MonoBehaviour
 
     public void OnReset()
     {
-        ResetWave();
+        ResetWave(true);
         StaticFunctions.addedRingCount = 0;
     }
 

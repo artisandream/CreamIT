@@ -12,18 +12,18 @@ public class StartButton : MonoBehaviour, IReset {
 	{
 		startButton = GetComponent<Button>();
 		startButton.onClick.AddListener(() => OnRestart());
-		uiAnims.SetBool("Start", true);
+		OnReset(true);
 		RunGame.ResetWave += OnReset;
 	}
 
-    public void OnReset()
+    public void OnReset(bool _bool)
     {
-        uiAnims.SetBool("Start", true);
+        uiAnims.SetBool("Start", _bool);
     }
 
     public void OnRestart()
     {
         StartButtonCall();
-		uiAnims.SetBool("Start", false);
+		OnReset(false);
     }
 }
