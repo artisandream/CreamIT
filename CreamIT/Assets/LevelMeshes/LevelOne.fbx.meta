@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 94ea63b79ef044078974cdd8d66e23df
-timeCreated: 1481231859
-licenseType: Pro
+guid: af83ac51f321a4f45beaaeaea3633f6e
+timeCreated: 1482793932
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Level1_Mesh
+    4300000: Level1
     9500000: //RootNode
   materials:
     importMaterials: 1
