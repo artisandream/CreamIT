@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
+using System;
 public class WaveObject : MonoBehaviour
 {
+    public static Action<int> RingCount;
+    public static Action<WaveObject> SendWave;
+    void Start()
+    {
+        RingCount(ringCount);
+        SendWave(this);
+    }
     //Rings
     public int ringCount = 6;
     public float ringGenerateTime = 3f;

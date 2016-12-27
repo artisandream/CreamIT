@@ -12,11 +12,16 @@ public class DragableAsset : MonoBehaviour
     private Animator thisAnims;
     private void Start()
     {
-        SendToGenerator(this);
+        Invoke("StartLate", 0.25f);
+       
         thisAnims = GetComponent<Animator>();
         OnReset(false);
 		RunGame.ResetWave += OnReset;
 		RunGame.RestartWave += OnRestart;
+    }
+
+    void StartLate() {
+         SendToGenerator(this);
     }
 	
 	public virtual void OnReset(bool _bool)

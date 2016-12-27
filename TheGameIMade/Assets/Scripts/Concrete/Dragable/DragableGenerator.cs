@@ -17,7 +17,7 @@ public class DragableGenerator : MonoBehaviour
         DragableAsset.ReturnToGenerator += ResetStartPoint;
         RunGame.RestartWave += OnRestart;
     }
-
+    
     public void OnRestart()
     {
         foreach (Transform point in startpointHoldList)

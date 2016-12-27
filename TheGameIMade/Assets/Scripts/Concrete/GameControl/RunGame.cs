@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
@@ -20,12 +20,18 @@ public class RunGame : MonoBehaviour
 
     public void Start()
     {
+        WaveObject.SendWave += AddToWaveObjectList;
         StartButton.StartButtonCall += OnStartButton;
-        CheckWave();
+        //CheckWave();
         Invoke("CheckWave", 0.01f);
         NextWave.GoToNextWave += StartModGame;
         NextWave.GoToNextWave += GoToNextWaveHandler;
         EndGame.GameOver += OnReset;
+    }
+
+    private void AddToWaveObjectList(WaveObject obj)
+    {
+        WaveObjectList.Add(obj);
     }
 
     private void OnStartButton()
@@ -52,7 +58,7 @@ public class RunGame : MonoBehaviour
         ResetWave(true);
         StaticFunctions.addedRingCount = 0;
     }
-
+    
     public void OnRestart(Action SendAction)
     {
         CheckWave();
