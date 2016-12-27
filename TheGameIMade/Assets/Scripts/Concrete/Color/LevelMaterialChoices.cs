@@ -11,7 +11,7 @@ public class LevelMaterialChoices : MonoBehaviour
 
     void Awake()
     {
-        MaterialColor.GetMaterial += OnSetColor;
+        MaterialColor.GetMaterial += OnSetRandomColor;
         WaveObject.RingCount += AddToRingCount;
         AddDragableAssets();
         Invoke("AddRingAssets", 0.5f);
@@ -45,7 +45,7 @@ public class LevelMaterialChoices : MonoBehaviour
         }
     }
 
-    public Material OnSetColor()
+    public Material OnSetRandomColor()
     {
         int random = StaticFunctions.RandomNumber(LevelMaterials.Count);
         return LevelMaterials[random];
