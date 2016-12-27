@@ -8,7 +8,7 @@ public class MaterialColor : MonoBehaviour
     void Start()
     {
         Renderer rend = GetComponent<Renderer>();
-        rend.material = GetMaterial();
+//        rend.material = GetMaterial();
     }
     void OnMouseUp () {
         Start();

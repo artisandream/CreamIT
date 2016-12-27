@@ -52,7 +52,6 @@ public class RingAsset : MonoBehaviour, IReset
         ender.SetActive(true);
         recycler.SetActive(false);
         OnReset(false);
-        print("restart");
     }
 
     public void OnWin()
