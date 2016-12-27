@@ -22,11 +22,16 @@ public class RunGame : MonoBehaviour
     {
         WaveObject.SendWave += AddToWaveObjectList;
         StartButton.StartButtonCall += OnStartButton;
-        //CheckWave();
         Invoke("CheckWave", 0.01f);
         NextWave.GoToNextWave += StartModGame;
         NextWave.GoToNextWave += GoToNextWaveHandler;
+        NextWave.OnWinGame += WinGame;
         EndGame.GameOver += OnReset;
+    }
+
+    private void WinGame()
+    {
+        print("Win");
     }
 
     private void AddToWaveObjectList(WaveObject obj)
@@ -45,12 +50,14 @@ public class RunGame : MonoBehaviour
         if (nextWaveNum < WaveObjectList.Count - 1)
         {
             nextWaveNum++;
+            OnRestart(PlayNextWave);
         }
         else
         {
             nextWaveNum = 0;
+            NextWave.GoToNextWave -= GoToNextWaveHandler;
         }
-        OnRestart(PlayNextWave);
+        
     }
 
     public void OnReset()

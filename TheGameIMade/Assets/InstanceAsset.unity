@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 312569867}
   - component: {fileID: 312569863}
   m_Layer: 10
-  m_Name: OnRecycleTrigger
+  m_Name: OnEndRingTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,7 +1057,7 @@ Transform:
   - {fileID: 312569865}
   - {fileID: 1476193990}
   m_Father: {fileID: 1544434034}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &559534399
 GameObject:
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d68645994424584923b030d3311c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringCount: 6
+  ringCount: 3
   ringGenerateTime: 1.2
   ringMoveSpeed: 3.5
   ringAddSpeed: 0.1
@@ -1233,7 +1233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d68645994424584923b030d3311c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringCount: 6
+  ringCount: 8
   ringGenerateTime: 1.2
   ringMoveSpeed: 3.5
   ringAddSpeed: 0.1
@@ -1608,7 +1608,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1544434034}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1259510193
 MonoBehaviour:
@@ -1685,7 +1685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1544434034}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1296132935
 BoxCollider:
@@ -1763,7 +1763,7 @@ GameObject:
   - component: {fileID: 1476193991}
   - component: {fileID: 1476193992}
   m_Layer: 10
-  m_Name: OnEndGameTrigger
+  m_Name: OnLoseGameTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1946,9 +1946,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1259510192}
   - {fileID: 537939962}
   - {fileID: 1296132934}
-  - {fileID: 1259510192}
   - {fileID: 1291523733}
   m_Father: {fileID: 1797007749}
   m_RootOrder: 3
@@ -2461,7 +2461,7 @@ GameObject:
   - component: {fileID: 2048613342}
   - component: {fileID: 2048613343}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Destination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,6 +21,14 @@ public class RingAsset : MonoBehaviour, IReset
         RunGame.SetSpeed += ResetSpeed;
         RunGame.OnModSpeed += ResetSpeed;
     }
+    public void OnDestoy ()
+    {
+        ColorTrigger.AddSpeedOnTrigger -= ResetSpeed;
+        RunGame.ResetWave -= OnReset;
+        RunGame.RestartWave -= OnRestart;
+        RunGame.SetSpeed -= ResetSpeed;
+        RunGame.OnModSpeed -= ResetSpeed;
+    }
 
     private void ResetSpeed(float obj)
     {
@@ -57,6 +65,10 @@ public class RingAsset : MonoBehaviour, IReset
     public void OnWin()
     {
         thisAnimator.SetBool("Win", true);
+    }
+
+    public void DestroyAsset () {
+        //Destroy(gameObject);
     }
 
     public void OnReset(bool _bool)

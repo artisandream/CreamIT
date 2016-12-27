@@ -19,10 +19,8 @@ public class LevelMaterialChoices : MonoBehaviour
 
     private void AddToRingCount(int _count)
     {
-        if (totalRingCount <= _count)
-        {
-            totalRingCount = _count;
-        }
+        totalRingCount += _count;
+        StaticFunctions.totalRingCount += _count;
     }
 
     void AddDragableAssets()

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RingRecycle : MonoBehaviour {
+public class RingEnd : MonoBehaviour {
 
 	public RingAsset ringAsset;
 	
