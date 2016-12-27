@@ -75,7 +75,7 @@ public class LevelMaterialChoices : MonoBehaviour
         // Array values = Enum.GetValues(typeof(LevelMaterialChoices.AvaliableColors));
         // thisColor =
         // (LevelMaterialChoices.AvaliableColors)values.GetValue(StaticFunctions.RandomNumber(values.Length));
-       print(LevelMaterials[random]);
+       print(random);
        return LevelMaterials[random];
     }
     // public Material ChangeMaterial()
