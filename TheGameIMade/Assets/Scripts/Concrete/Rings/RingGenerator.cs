@@ -42,7 +42,6 @@ public class RingGenerator : MonoBehaviour, IReset {
 				RingStartPoints[StaticFunctions.RandomNumber(RingStartPoints.Count-1)].position;
 			RingAssetList[0].OnSet(destination);
 			RingAssetList.RemoveAt(0);
-			StaticFunctions.totalRingCount--;
 			ringCount--;
 		}
 	}

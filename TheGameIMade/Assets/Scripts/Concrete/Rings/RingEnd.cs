@@ -6,6 +6,7 @@ public class RingEnd : MonoBehaviour {
 	
 	void OnTriggerEnter()
 	{
+		GetComponent<CapsuleCollider>().enabled = false;
 		ringAsset.OnWin();
 	}
 }

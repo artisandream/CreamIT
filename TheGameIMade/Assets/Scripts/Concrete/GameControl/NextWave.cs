@@ -20,7 +20,8 @@ public class NextWave : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		ringCount--;
-		if(StaticFunctions.totalRingCount <= 0) {
+		StaticFunctions.totalRingCount--;
+		if(StaticFunctions.totalRingCount == 0) {
 			OnWinGame();
 		}
 
