@@ -1,6 +1,5 @@
 ﻿
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 
 public class LevelMaterialChoices : MonoBehaviour
@@ -18,8 +17,8 @@ public class LevelMaterialChoices : MonoBehaviour
     // }
     
     public GameObject dragableAsset;
-
-
+    public GameObject ringAsset;
+    public int totalRingCount;
 
     public List<Material> LevelMaterials;
 
@@ -36,10 +35,19 @@ public class LevelMaterialChoices : MonoBehaviour
     //Material thisMaterial;
 
     void Awake()
-    {
+    {       
+        MaterialColor.GetMaterial += OnSetColor;
+        WaveObject.RingCount += AddToRingCount;
         AddDragableAssets();
-       
-//        MaterialColor.GetMaterial += OnSetColor;
+        Invoke("AddRingAssets", 0.5f);
+    }
+
+    private void AddToRingCount(int _count)
+    {
+        
+        if(totalRingCount <= _count) {
+            totalRingCount = _count;
+        }    
     }
 
     void AddDragableAssets () {
@@ -51,46 +59,59 @@ public class LevelMaterialChoices : MonoBehaviour
         }
     }
 
-    // public Material OnSetColor()
-    // {
-    //     Array values = Enum.GetValues(typeof(LevelMaterialChoices.AvaliableColors));
-    //     thisColor =
-    //     (LevelMaterialChoices.AvaliableColors)values.GetValue(StaticFunctions.RandomNumber(values.Length));
-    //     return ChangeMaterial();
-    // }
+    void AddRingAssets () {
+        while (totalRingCount > 0) {
+            GameObject newRing =  Instantiate(ringAsset);
+           // newRing.GetComponent<SpriteRenderer>().material = LevelMaterials[0];
+//            newRing.GetComponent<RingAsset>().OnSetColor()
+            newRing.name = "Asset";
+            totalRingCount--;
+        }
+    }
+
+    public Material OnSetColor()
+    {   
+        int random = StaticFunctions.RandomNumber(LevelMaterials.Count);
+        // Array values = Enum.GetValues(typeof(LevelMaterialChoices.AvaliableColors));
+        // thisColor =
+        // (LevelMaterialChoices.AvaliableColors)values.GetValue(StaticFunctions.RandomNumber(values.Length));
+       print(LevelMaterials[random]);
+       return LevelMaterials[random];
+    }
     // public Material ChangeMaterial()
     // {
-    //     switch (thisColor)
-    //     {
-    //         case LevelMaterialChoices.AvaliableColors.Red:
-    //             thisMaterial = Red;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.Yellow:
-    //             thisMaterial = Yellow;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.Blue:
-    //             thisMaterial = Blue;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.Green:
-    //             thisMaterial = Green;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.Pink:
-    //             thisMaterial = Pink;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.Purple:
-    //             thisMaterial = Purple;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.LTBlue:
-    //             thisMaterial = LTBlue;
-    //             break;
-    //         case LevelMaterialChoices.AvaliableColors.Orange:
-    //             thisMaterial = Orange;
-    //             break;
-    //         default:
-    //             thisMaterial = Red;
-    //             break;
-    //     }
-    //     return thisMaterial;
+    //     return null;
+    //     // switch (thisColor)
+    //     // {
+    //     //     case LevelMaterialChoices.AvaliableColors.Red:
+    //     //         thisMaterial = Red;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.Yellow:
+    //     //         thisMaterial = Yellow;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.Blue:
+    //     //         thisMaterial = Blue;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.Green:
+    //     //         thisMaterial = Green;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.Pink:
+    //     //         thisMaterial = Pink;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.Purple:
+    //     //         thisMaterial = Purple;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.LTBlue:
+    //     //         thisMaterial = LTBlue;
+    //     //         break;
+    //     //     case LevelMaterialChoices.AvaliableColors.Orange:
+    //     //         thisMaterial = Orange;
+    //     //         break;
+    //     //     default:
+    //     //         thisMaterial = Red;
+    //     //         break;
+    //     // }
+    //     // return thisMaterial;
     // }
 }
 

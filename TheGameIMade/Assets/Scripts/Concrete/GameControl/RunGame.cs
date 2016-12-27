@@ -52,7 +52,7 @@ public class RunGame : MonoBehaviour
         ResetWave(true);
         StaticFunctions.addedRingCount = 0;
     }
-
+    
     public void OnRestart(Action SendAction)
     {
         CheckWave();

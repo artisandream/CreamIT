@@ -12,7 +12,7 @@ public class DragableAsset : MonoBehaviour
     private Animator thisAnims;
     private void Start()
     {
-        Invoke("StartLate", 1);
+        Invoke("StartLate", 0.25f);
        
         thisAnims = GetComponent<Animator>();
         OnReset(false);
