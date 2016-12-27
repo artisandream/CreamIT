@@ -521,7 +521,7 @@ PlayerSettings:
   cloudServicesEnabled:
     Analytics: 0
     Build: 0
-    Collab: 1
+    Collab: 0
     ErrorHub: 0
     Game_Performance: 0
     Hub: 0
@@ -529,6 +529,6 @@ PlayerSettings:
     UNet: 1
     Unity_Ads: 0
   cloudProjectId: f289257c-eeac-46a9-b48e-16568b1c216b
-  projectName: CreamIT
+  projectName: TheGameIMade
   organizationId: amronellc
   cloudEnabled: 0
