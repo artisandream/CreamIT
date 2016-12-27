@@ -35,13 +35,14 @@ public class RingGenerator : MonoBehaviour, IReset {
 		obj.transform.position = rignRelocation.position;
 	}
 
-    IEnumerator RecycleRings () {
+    IEnumerator LaunchRings () {
 		while(ringCount > 0){
 			yield return new WaitForSeconds(StaticFunctions.ringGenerateTime);
 			RingAssetList[0].transform.position = 
 				RingStartPoints[StaticFunctions.RandomNumber(RingStartPoints.Count-1)].position;
 			RingAssetList[0].OnSet(destination);
 			RingAssetList.RemoveAt(0);
+			StaticFunctions.totalRingCount--;
 			ringCount--;
 		}
 	}
@@ -49,6 +50,6 @@ public class RingGenerator : MonoBehaviour, IReset {
     public void OnRestart()
     {
 		ringCount = StaticFunctions.currentWave.ringCount;
-        StartCoroutine(RecycleRings());
+        StartCoroutine(LaunchRings());
     }
 }

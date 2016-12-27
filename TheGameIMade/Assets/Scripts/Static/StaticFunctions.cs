@@ -7,6 +7,7 @@ public class StaticFunctions : MonoBehaviour
     public static float currentSpeed;
     public static float ringGenerateTime;
 	public static int addedRingCount;
+    public static int totalRingCount;
 	
     public static int RandomNumber(int _totalAvaliable)
     {

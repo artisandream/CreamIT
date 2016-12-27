@@ -4,6 +4,7 @@ using UnityEngine;
 public class NextWave : MonoBehaviour {
 
 	public static Action GoToNextWave;
+	public static Action OnWinGame;
 	public int ringCount;
 
 	void Start()
@@ -19,6 +20,10 @@ public class NextWave : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		ringCount--;
+		if(StaticFunctions.totalRingCount <= 0) {
+			OnWinGame();
+		}
+
 		if(ringCount == 0) {
 			GoToNextWave();
 		}
