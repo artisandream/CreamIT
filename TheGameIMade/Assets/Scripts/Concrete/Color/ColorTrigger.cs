@@ -4,6 +4,7 @@ public class ColorTrigger : MonoBehaviour
 {
     public RingAsset ringAsset;
     public static Action<float> AddSpeedOnTrigger;
+	public static Action ColorMatch;
 
     SpriteRenderer thisRenderer;
 
@@ -19,6 +20,7 @@ public class ColorTrigger : MonoBehaviour
             ringAsset.blankCenter.material =
                 thisRenderer.material;
             ringAsset.OnSetColor();
+			ColorMatch();
         }
         else
         {
