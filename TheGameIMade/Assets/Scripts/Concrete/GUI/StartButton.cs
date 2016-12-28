@@ -25,7 +25,6 @@ public class StartButton : MonoBehaviour, IReset {
     public void OnRestart()
     {
         StartButtonCall();
-		print ("StartButton.cs OnRestart");
 		OnReset(false);
     }
 }
