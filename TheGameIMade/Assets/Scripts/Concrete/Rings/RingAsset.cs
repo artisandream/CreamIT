@@ -5,6 +5,7 @@ public class RingAsset : MonoBehaviour, IReset
 {
 
     public static Action<RingAsset> SendToGenerator;
+	public static Action RingOnWin;
     public SpriteRenderer blankCenter;
     public Material black;
     public GameObject ender;
@@ -65,6 +66,7 @@ public class RingAsset : MonoBehaviour, IReset
     public void OnWin()
     {
         thisAnimator.SetBool("Win", true);
+		RingOnWin();
     }
 
     public void DestroyAsset () {
