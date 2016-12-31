@@ -23,6 +23,9 @@ public class MusicController : MonoBehaviour {
 	public AudioClip matchSound;
 	public AudioSource matchSource;
 
+	public AudioClip notMatchSound;
+	public AudioSource notMatchSource;
+
 	void Awake()
 	{
 		StartButton.StartButtonCall += PlayButtonSound;
@@ -31,6 +34,7 @@ public class MusicController : MonoBehaviour {
 		EndGame.GameOver += PlayOpenRingSound;
 		RingAsset.RingOnWin += PlayCatchSound;
 		ColorTrigger.ColorMatch += PlayMatchSound;
+		ColorTrigger.ColorNotMatch += PlayNotMatchSound;
 	}
 
 	public void ColorActionStart()
@@ -66,4 +70,11 @@ public class MusicController : MonoBehaviour {
 		matchSource.clip = matchSound;
 		matchSource.Play();
 	}
+
+	public void PlayNotMatchSound()
+	{
+		notMatchSource.clip = notMatchSound;
+		notMatchSource.Play();
+	}
 }
+

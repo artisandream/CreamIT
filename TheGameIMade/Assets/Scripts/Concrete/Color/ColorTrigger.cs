@@ -5,6 +5,7 @@ public class ColorTrigger : MonoBehaviour
     public RingAsset ringAsset;
     public static Action<float> AddSpeedOnTrigger;
 	public static Action ColorMatch;
+	public static Action ColorNotMatch;
 
     SpriteRenderer thisRenderer;
 
@@ -25,6 +26,7 @@ public class ColorTrigger : MonoBehaviour
         else
         {
             AddSpeedOnTrigger(StaticFunctions.OnModSpeed());
+			ColorNotMatch();
         }
     }
 }
