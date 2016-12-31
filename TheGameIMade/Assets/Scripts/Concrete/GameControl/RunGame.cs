@@ -1,4 +1,4 @@
-﻿    using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
@@ -20,7 +20,6 @@ public class RunGame : MonoBehaviour
 
     public void Start()
     {
-        WaveObject.SendWave += AddToWaveObjectList;
         StartButton.StartButtonCall += OnStartButton;
         Invoke("CheckWave", 0.01f);
         NextWave.GoToNextWave += StartModGame;
@@ -44,7 +43,7 @@ public class RunGame : MonoBehaviour
         nextWaveNum = 0;
         OnRestart(RestartWave);
     }
-    
+
     private void GoToNextWaveHandler()
     {
         if (nextWaveNum < WaveObjectList.Count - 1)
@@ -57,7 +56,7 @@ public class RunGame : MonoBehaviour
             nextWaveNum = 0;
             NextWave.GoToNextWave -= GoToNextWaveHandler;
         }
-        
+
     }
 
     public void OnReset()
@@ -65,7 +64,7 @@ public class RunGame : MonoBehaviour
         ResetWave(true);
         StaticFunctions.addedRingCount = 0;
     }
-    
+
     public void OnRestart(Action SendAction)
     {
         CheckWave();
@@ -93,7 +92,7 @@ public class RunGame : MonoBehaviour
         modNum = StaticFunctions.currentWave.waveModCount;
         while (modNum > 0)
         {
-	        yield return new WaitForSeconds(StaticFunctions.currentWave.waveModTimeHold);
+            yield return new WaitForSeconds(StaticFunctions.currentWave.waveModTimeHold);
             newSpeed = StaticFunctions.OnModSpeed();
             newGenTime = StaticFunctions.currentWave.ringGenerateTime;
             StaticFunctions.ChangeGenTime();

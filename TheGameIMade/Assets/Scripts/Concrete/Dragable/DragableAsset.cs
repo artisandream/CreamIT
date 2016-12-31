@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System;
 
 public class DragableAsset : MonoBehaviour
@@ -7,46 +8,74 @@ public class DragableAsset : MonoBehaviour
     public static Action<Transform, DragableAsset> ReturnToGenerator;
     public Transform lastStartPoint;
     public Transform StartPoint;
+    public Transform FirstPoint;
     private Vector3 offset;
-
+    public bool canDrag = true;
+    private BoxCollider bc;
+    private SpriteRenderer sr;
     private Animator thisAnims;
     private void Start()
     {
         Invoke("StartLate", 0.25f);
-       
+        bc = GetComponent<BoxCollider>();
+        sr = GetComponent<SpriteRenderer>();
         thisAnims = GetComponent<Animator>();
         OnReset(false);
-		RunGame.ResetWave += OnReset;
-		RunGame.RestartWave += OnRestart;
+        RunGame.ResetWave += OnReset;
+        RunGame.RestartWave += OnRestart;
+        DragableFirstPoint.SendToDragable += OnSetFirstPoint;
     }
 
-    void StartLate() {
-         SendToGenerator(this);
+    private void OnSetFirstPoint(Transform obj)
+    {
+        FirstPoint = obj;
     }
-	
-	public virtual void OnReset(bool _bool)
+
+    void StartLate()
+    {
+        SendToGenerator(this);
+    }
+
+    public virtual void OnReset(bool _bool)
     {
         thisAnims.SetBool("Reset", _bool);
-    } 
+    }
 
     private void OnRestart()
     {
         OnReset(false);
-        transform.position = StartPoint.localPosition;
     }
 
     private void OnMouseDown()
     {
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        StartCoroutine(DragAsset());
     }
 
-    private void OnMouseDrag()
+    private IEnumerator DragAsset()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+        while (canDrag)
+        {
+            yield return new WaitForSeconds(0.01f);
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+        }
     }
 
     private void OnMouseUp()
     {
+        canDrag = false;
         ReturnToGenerator(lastStartPoint, this);
+    }
+    private void OnTriggerEnter()
+    {
+        RePosition(false);
+    }
+
+    internal void RePosition(bool _b)
+    {
+        transform.position = FirstPoint.position;
+        bc.enabled = _b;
+        sr.enabled = _b;
+        canDrag = _b;
     }
 }

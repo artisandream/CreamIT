@@ -3,11 +3,11 @@ using System;
 public class WaveObject : MonoBehaviour
 {
     public static Action<int> RingCount;
-    public static Action<WaveObject> SendWave;
+    //public static Action<WaveObject> SendWave;
     void Start()
     {
         RingCount(ringCount);
-        SendWave(this);
+        //SendWave(this);
     }
     //Rings
     public int ringCount = 6;

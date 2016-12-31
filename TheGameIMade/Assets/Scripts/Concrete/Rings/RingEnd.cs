@@ -1,12 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class RingEnd : MonoBehaviour {
 
 	public RingAsset ringAsset;
-	
-	void OnTriggerEnter()
+	private CapsuleCollider cc;
+
+	void Start()
 	{
-		GetComponent<CapsuleCollider>().enabled = false;
+		cc = GetComponent<CapsuleCollider>();
+		RunGame.RestartWave += ResetCollider;
+	}
+
+    private void ResetCollider()
+    {
+        cc.enabled = true;
+    }
+
+    void OnTriggerEnter()
+	{
+		cc.enabled = false;
 		ringAsset.OnWin();
 	}
+	
 }

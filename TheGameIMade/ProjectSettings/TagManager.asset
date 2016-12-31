@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - ModGame
-  - Recycler
+  - RingEnd
   - Touch
-  - ColorCenter
-  - ColorChanger
+  - RingCenter
+  - DragableAsset
   - 
   - 
   - 
