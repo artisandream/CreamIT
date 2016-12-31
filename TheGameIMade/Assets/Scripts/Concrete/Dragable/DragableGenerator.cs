@@ -17,7 +17,7 @@ public class DragableGenerator : MonoBehaviour
         DragableAsset.ReturnToGenerator += ResetStartPoint;
         RunGame.RestartWave += OnRestart;
     }
-    
+
     public void OnRestart()
     {
         foreach (Transform point in startpointHoldList)
@@ -33,7 +33,7 @@ public class DragableGenerator : MonoBehaviour
         startpointHoldList.Remove(startPoint);
         startpointList.Add(startPoint);
         dragable.transform.position = dragableOffScreen.position;
-        ResetDrabables(dragable);
+        StartCoroutine(ResetDrabables(dragable));
     }
 
     private void AddToStartPointList(Transform startPoint)
@@ -44,7 +44,7 @@ public class DragableGenerator : MonoBehaviour
     private void AddToDragableList(DragableAsset dragable)
     {
         dragableList.Add(dragable);
-        dragable.transform.position = dragableOffScreen.position;
+        //dragable.transform.position = dragableOffScreen.position;
     }
 
     IEnumerator SetDrabables()
@@ -54,13 +54,15 @@ public class DragableGenerator : MonoBehaviour
         while (i >= 0)
         {
             yield return new WaitForSeconds(StaticFunctions.currentWave.dragableAppearTime);
-            ResetDrabables(dragableList[i]);
+            StartCoroutine(ResetDrabables(dragableList[i]));
             i--;
         }
     }
 
-    private void ResetDrabables(DragableAsset dragable)
+    private IEnumerator ResetDrabables(DragableAsset dragable)
     {
+        yield return new WaitForSeconds(StaticFunctions.currentWave.dragableAppearTime);
+        dragable.RePosition(true);
         int r = StaticFunctions.RandomNumber(startpointList.Count - 1);
         dragable.transform.position = startpointList[r].position;
         dragable.lastStartPoint = startpointList[r];
