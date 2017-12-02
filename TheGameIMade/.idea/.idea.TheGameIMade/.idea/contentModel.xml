@@ -20,14 +20,19 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Audio" t="Include">
+            <e p="MusicController.cs" t="Include" />
+          </e>
           <e p="Concrete" t="Include">
             <e p="Color" t="Include">
+              <e p="ColorChoices.cs" t="Include" />
               <e p="ColorTrigger.cs" t="Include" />
               <e p="LevelMaterialChoices.cs" t="Include" />
               <e p="MaterialColor.cs" t="Include" />
             </e>
             <e p="Dragable" t="Include">
               <e p="DragableAsset.cs" t="Include" />
+              <e p="DragableFirstPoint.cs" t="Include" />
               <e p="DragableGenerator.cs" t="Include" />
               <e p="DragableStartPoint.cs" t="Include" />
             </e>
@@ -44,11 +49,16 @@
               <e p="RingAsset.cs" t="Include" />
               <e p="RingEnd.cs" t="Include" />
               <e p="RingGenerator.cs" t="Include" />
+              <e p="RingRecycle.cs" t="Include" />
               <e p="RingStartPoint.cs" t="Include" />
             </e>
           </e>
           <e p="Interfaces" t="Include">
             <e p="Interfaces.cs" t="Include" />
+          </e>
+          <e p="ScriptableObjects" t="Include">
+            <e p="Characters.cs" t="Include" />
+            <e p="Word.cs" t="Include" />
           </e>
           <e p="Spawning" t="Include">
             <e p="GamePiece.cs" t="Include" />

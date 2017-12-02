@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-//using DG.Tweening;
+using DG.Tweening;
 using UnityEngine;
 
 public class GamePiece : MonoBehaviour
@@ -22,7 +22,7 @@ public class GamePiece : MonoBehaviour
             return;
         }
 
-        //gameObject.transform.DOMove(_wayPoints[_currentWayPoint].GetPosition(), _speed);
+        gameObject.transform.DOMove(_wayPoints[_currentWayPoint].GetPosition(), _speed);
         _currentWayPoint++;
     }
 }
