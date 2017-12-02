@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Audio" t="Include">
+            <e p="MusicController.cs" t="Include" />
+          </e>
+          <e p="Concrete" t="Include">
+            <e p="Color" t="Include">
+              <e p="ColorChoices.cs" t="Include" />
+              <e p="ColorTrigger.cs" t="Include" />
+              <e p="LevelMaterialChoices.cs" t="Include" />
+              <e p="MaterialColor.cs" t="Include" />
+            </e>
+            <e p="Dragable" t="Include">
+              <e p="DragableAsset.cs" t="Include" />
+              <e p="DragableFirstPoint.cs" t="Include" />
+              <e p="DragableGenerator.cs" t="Include" />
+              <e p="DragableStartPoint.cs" t="Include" />
+            </e>
+            <e p="GameControl" t="Include">
+              <e p="EndGame.cs" t="Include" />
+              <e p="NextWave.cs" t="Include" />
+              <e p="RunGame.cs" t="Include" />
+              <e p="WaveObject.cs" t="Include" />
+            </e>
+            <e p="GUI" t="Include">
+              <e p="StartButton.cs" t="Include" />
+            </e>
+            <e p="Rings" t="Include">
+              <e p="RingAsset.cs" t="Include" />
+              <e p="RingEnd.cs" t="Include" />
+              <e p="RingGenerator.cs" t="Include" />
+              <e p="RingRecycle.cs" t="Include" />
+              <e p="RingStartPoint.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Interfaces" t="Include">
+            <e p="Interfaces.cs" t="Include" />
+          </e>
+          <e p="Static" t="Include">
+            <e p="StaticFunctions.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="TheGameIMade.sln" t="IncludeFlat" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_TheGameIMade.-1430103308.00" t="ExcludeRecursive" />
+  </component>
+</project>
