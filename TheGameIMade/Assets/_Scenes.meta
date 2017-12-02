@@ -1,7 +1,15 @@
 fileFormatVersion: 2
 guid: df1ce277210df4dfe8985fffa9d228bc
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1512241322
+=======
+<<<<<<< HEAD
+timeCreated: 1512250475
+=======
+timeCreated: 1512241322
+>>>>>>> 0c5ef69e4365d4d0dfedb5a94f7e471902169f4c
+>>>>>>> AlgerChanges
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
