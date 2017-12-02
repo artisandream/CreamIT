@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+<<<<<<< HEAD
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -11,13 +12,38 @@
           <e p="Concrete" t="Include">
             <e p="Color" t="Include">
               <e p="ColorChoices.cs" t="Include" />
+=======
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Demigiant" t="Include">
+          <e p="DOTween" t="Include">
+            <e p="DOTween43.xml" t="Include" />
+            <e p="DOTween46.xml" t="Include" />
+            <e p="DOTween50.xml" t="Include" />
+          </e>
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Concrete" t="Include">
+            <e p="Color" t="Include">
+>>>>>>> 0c5ef69e4365d4d0dfedb5a94f7e471902169f4c
               <e p="ColorTrigger.cs" t="Include" />
               <e p="LevelMaterialChoices.cs" t="Include" />
               <e p="MaterialColor.cs" t="Include" />
             </e>
             <e p="Dragable" t="Include">
               <e p="DragableAsset.cs" t="Include" />
+<<<<<<< HEAD
               <e p="DragableFirstPoint.cs" t="Include" />
+=======
+>>>>>>> 0c5ef69e4365d4d0dfedb5a94f7e471902169f4c
               <e p="DragableGenerator.cs" t="Include" />
               <e p="DragableStartPoint.cs" t="Include" />
             </e>
@@ -34,13 +60,26 @@
               <e p="RingAsset.cs" t="Include" />
               <e p="RingEnd.cs" t="Include" />
               <e p="RingGenerator.cs" t="Include" />
+<<<<<<< HEAD
               <e p="RingRecycle.cs" t="Include" />
+=======
+>>>>>>> 0c5ef69e4365d4d0dfedb5a94f7e471902169f4c
               <e p="RingStartPoint.cs" t="Include" />
             </e>
           </e>
           <e p="Interfaces" t="Include">
             <e p="Interfaces.cs" t="Include" />
           </e>
+<<<<<<< HEAD
+=======
+          <e p="Spawning" t="Include">
+            <e p="GamePiece.cs" t="Include" />
+            <e p="SpawnManager.cs" t="Include" />
+            <e p="WayPoint.cs" t="Include" />
+            <e p="WayPointController.cs" t="Include" />
+            <e p="WayPointRow.cs" t="Include" />
+          </e>
+>>>>>>> 0c5ef69e4365d4d0dfedb5a94f7e471902169f4c
           <e p="Static" t="Include">
             <e p="StaticFunctions.cs" t="Include" />
           </e>
