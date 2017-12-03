@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class SpawnManager : MonoBehaviour
 	[SerializeField] private GameObject _startPoint;
 	[SerializeField] private WayPoint _endWayPoint;
 	[SerializeField] private GameObject _gamePiecePrefab;
+	[SerializeField] private ScriptableObject _charecterMap;
 
 	private void Awake()
 	{
@@ -44,6 +46,12 @@ public class SpawnManager : MonoBehaviour
 			}
 			
 			newGamePiece.AddWayPoint(_endWayPoint);
+
+			var gamePieceImage = newGamePiece.GetComponent<Image>();
+			//Char 'a' - 'z' is 97 - 122
+			var randomChar = (char)Random.Range(97, 122);
+
+			gamePieceImage.sprite = ((Characters) _charecterMap).GetCharecterSprite(randomChar);
 			
 			newGamePiece.MoveNextWayPoint();
 
