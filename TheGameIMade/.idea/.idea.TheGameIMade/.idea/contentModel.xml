@@ -53,6 +53,10 @@
               <e p="RingStartPoint.cs" t="Include" />
             </e>
           </e>
+          <e p="Helpers" t="Include">
+            <e p="CharecterMap.cs" t="Include" />
+            <e p="SerializableDictionaryBase.cs" t="Include" />
+          </e>
           <e p="Interfaces" t="Include">
             <e p="Interfaces.cs" t="Include" />
           </e>
