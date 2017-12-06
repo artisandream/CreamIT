@@ -5,6 +5,7 @@ public class Characters : ScriptableObject
 {
     [SerializeField] private CharecterMap _characterImageMap = new CharecterMap
     {
+        //Sprites will be assigned in the editor
         {'a', null},
         {'b', null},
         {'c', null},

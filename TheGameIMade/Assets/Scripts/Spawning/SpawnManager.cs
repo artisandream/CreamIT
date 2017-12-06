@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class SpawnManager : MonoBehaviour
 {
 	private List<WayPointRow> _wayPointRows = new List<WayPointRow>();
+	
 	[SerializeField] private GameObject _startPoint;
 	[SerializeField] private WayPoint _endWayPoint;
 	[SerializeField] private GameObject _gamePiecePrefab;
 	[SerializeField] private ScriptableObject _charecterMap;
+	[SerializeField] private ScriptableObject _wordsMap;
 
 	private void Awake()
 	{
@@ -22,17 +24,21 @@ public class SpawnManager : MonoBehaviour
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(2.5f);
+			yield return new WaitForSeconds(5.0f);
 			
-			var wordCount = Random.Range(3, 7);
+			var wordCount = (WordCount)Random.Range(0, 7);
 			Debug.Log("SpawnNewWord: " + wordCount);
 			StartCoroutine(SpawnNewPiece(wordCount));
 		}
 	}
 
-	private IEnumerator SpawnNewPiece(int wordLength)
+	private IEnumerator SpawnNewPiece(WordCount wordCount)
 	{
-		while (wordLength > 0)
+
+		var newWord = ((Words) _wordsMap).GetWord(wordCount);
+		var wordLength = newWord.Key.Length - 1;
+		
+		while (wordLength >= 0)
 		{
 			yield return new WaitForSeconds(0.5f);
 					
@@ -48,13 +54,12 @@ public class SpawnManager : MonoBehaviour
 			newGamePiece.AddWayPoint(_endWayPoint);
 
 			var gamePieceImage = newGamePiece.GetComponent<Image>();
-			//Char 'a' - 'z' is 97 - 122
-			var randomChar = (char)Random.Range(97, 122);
+			var randomChar = newWord.Key[wordLength];
 
 			gamePieceImage.sprite = ((Characters) _charecterMap).GetCharecterSprite(randomChar);
 			
 			newGamePiece.MoveNextWayPoint();
-
+			
 			wordLength--;
 		}
 	}
