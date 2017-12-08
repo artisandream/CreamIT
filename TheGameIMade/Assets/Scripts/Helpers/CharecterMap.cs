@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class CharecterMap : SerializableDictionaryBase<char, Sprite> 
+public class CharecterMap : SerializableDictionaryBase<char, Sprite>
 {
 }
