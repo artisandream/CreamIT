@@ -72,6 +72,7 @@
           </e>
           <e p="Helpers" t="Include">
             <e p="CharecterMap.cs" t="Include" />
+            <e p="HudManager.cs" t="Include" />
             <e p="SerializableDictionaryBase.cs" t="Include" />
             <e p="WordCount.cs" t="Include" />
             <e p="WordMap.cs" t="Include" />
@@ -81,6 +82,7 @@
           </e>
           <e p="ScriptableObjects" t="Include">
             <e p="Characters.cs" t="Include" />
+            <e p="Word.cs" t="Include" />
             <e p="Words.cs" t="Include" />
           </e>
           <e p="Spawning" t="Include">
@@ -103,6 +105,6 @@
       </e>
       <e p="TheGameIMade.sln" t="IncludeFlat" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_TheGameIMade.1084654880.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_TheGameIMade.-1430103308.00" t="ExcludeRecursive" />
   </component>
 </project>
