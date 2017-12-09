@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2528a1eef822545e7bddea9cbf742054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringAsset: {fileID: 114000011963559434}
+  RingAsset: {fileID: 114000011963559434}
 --- !u!114 &114000011963559434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b01bdf1302449f6adfb3ed5f4970da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blankCenter: {fileID: 212000013464964172}
-  black: {fileID: 2100000, guid: 3f6ee0098b6414eab8df4b608ff3ac79, type: 2}
+  BlankCenter: {fileID: 212000013464964172}
+  Black: {fileID: 2100000, guid: 3f6ee0098b6414eab8df4b608ff3ac79, type: 2}
   ender: {fileID: 1000012404808552}
   recycler: {fileID: 1000012675030180}
   thisAnimator: {fileID: 95000013446274554}
@@ -551,7 +551,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 702c94f0a47714115b02fc46f3170188, type: 3}
+  m_Sprite: {fileID: 21300056, guid: 9fff0aad506894d7fb5cff3aedfb2789, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -595,7 +595,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 702c94f0a47714115b02fc46f3170188, type: 3}
+  m_Sprite: {fileID: 21300054, guid: 9fff0aad506894d7fb5cff3aedfb2789, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

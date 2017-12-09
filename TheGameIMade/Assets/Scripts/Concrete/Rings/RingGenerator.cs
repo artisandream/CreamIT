@@ -10,7 +10,7 @@ namespace Concrete.Rings
 	public class RingGenerator : MonoBehaviour, IReset {
 
 		private int _ringCount;
-		public Transform RignRelocation;
+		public Transform ringRelocation;
 		public List<Transform> RingStartPoints;
 		public Transform Destination;
 		public List<RingAsset> RingAssetList;
@@ -37,7 +37,7 @@ namespace Concrete.Rings
 		private void AddToList(RingAsset obj)
 		{
 			RingAssetList.Add(obj);
-			obj.transform.position = RignRelocation.position;
+			obj.transform.position = ringRelocation.position;
 		}
 
 		private IEnumerator LaunchRings () {
