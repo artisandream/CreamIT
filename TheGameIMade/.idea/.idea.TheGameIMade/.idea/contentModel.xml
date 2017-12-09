@@ -86,7 +86,9 @@
             <e p="Words.cs" t="Include" />
           </e>
           <e p="Spawning" t="Include">
+            <e p="EmptyLetterGamePiece.cs" t="Include" />
             <e p="GamePiece.cs" t="Include" />
+            <e p="LetterGamePiece.cs" t="Include" />
             <e p="SpawnManager.cs" t="Include" />
             <e p="WayPoint.cs" t="Include" />
             <e p="WayPointController.cs" t="Include" />
