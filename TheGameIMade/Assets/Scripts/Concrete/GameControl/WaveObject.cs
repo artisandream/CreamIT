@@ -1,24 +1,28 @@
-﻿using UnityEngine;
-using System;
-public class WaveObject : MonoBehaviour
+﻿using System;
+using UnityEngine;
+
+namespace Concrete.GameControl
 {
-    public static Action<int> RingCount;
-    //public static Action<WaveObject> SendWave;
-    void Start()
+    public class WaveObject : MonoBehaviour
     {
-        RingCount(ringCount);
-        //SendWave(this);
+        public static Action<int> RingCountAction;
+        //public static Action<WaveObject> SendWave;
+        void Start()
+        {
+            RingCountAction(RingCount);
+            //SendWave(this);
+        }
+        //Rings
+        public int RingCount = 6;
+        public float RingGenerateTime = 3f;
+        public float RingMoveSpeed = 3.5f;
+        public float RingAddSpeed = 0.1f;
+
+        //Dragables
+        public float DragableAppearTime = 0.2f;
+
+        //Wave Mods
+        public int WaveModTimeHold = 5;
+        public int WaveModCount = 3;
     }
-    //Rings
-    public int ringCount = 6;
-    public float ringGenerateTime = 3f;
-    public float ringMoveSpeed = 3.5f;
-    public float ringAddSpeed = 0.1f;
-
-    //Dragables
-    public float dragableAppearTime = 0.2f;
-
-    //Wave Mods
-    public int waveModTimeHold = 5;
-    public int waveModCount = 3;
 }

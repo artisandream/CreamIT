@@ -1,39 +1,43 @@
 ﻿using System;
+using Static;
 using UnityEngine;
 
-public class NextWave : MonoBehaviour
+namespace Concrete.GameControl
 {
-
-    public static Action GoToNextWave;
-    public static Action OnWinGame;
-    public int ringCount;
-
-    void Start()
+    public class NextWave : MonoBehaviour
     {
-        RunGame.OnStartWave += OnStartWaveHandler;
-    }
 
-    private void OnStartWaveHandler()
-    {
-        ringCount = StaticFunctions.currentWave.ringCount;
-    }
+        public static Action GoToNextWave;
+        public static Action OnWinGame;
+        public int ringCount;
 
-    void OnTriggerEnter(Collider other)
-    {
-        ringCount--;
-        StaticFunctions.totalRingCount--;
-        if (StaticFunctions.totalRingCount == 0)
+        void Start()
         {
-            OnWinGame();
+            RunGame.OnStartWave += OnStartWaveHandler;
         }
 
-        if (ringCount == 0)
+        private void OnStartWaveHandler()
         {
-            if (GoToNextWave != null)
+            ringCount = StaticFunctions.currentWave.RingCount;
+        }
+
+        void OnTriggerEnter(Collider other)
+        {
+            ringCount--;
+            StaticFunctions.totalRingCount--;
+            if (StaticFunctions.totalRingCount == 0)
             {
-                GoToNextWave();
+                OnWinGame();
             }
 
+            if (ringCount == 0)
+            {
+                if (GoToNextWave != null)
+                {
+                    GoToNextWave();
+                }
+
+            }
         }
     }
 }

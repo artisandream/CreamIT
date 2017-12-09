@@ -1,13 +1,16 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Material))]
-public class MaterialColor : MonoBehaviour
+namespace Concrete.Color
 {
-    public static Func<Material> GetMaterial;
-    void Start()
+    [RequireComponent(typeof(Material))]
+    public class MaterialColor : MonoBehaviour
     {
-        Renderer rend = GetComponent<Renderer>();
-        rend.material = GetMaterial();
+        public static Func<Material> GetMaterial;
+        void Start()
+        {
+            Renderer rend = GetComponent<Renderer>();
+            rend.material = GetMaterial();
+        }
     }
 }

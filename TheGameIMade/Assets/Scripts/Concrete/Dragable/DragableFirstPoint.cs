@@ -1,11 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-public class DragableFirstPoint : MonoBehaviour {
+namespace Concrete.Dragable
+{
+	public class DragableFirstPoint : MonoBehaviour {
 
-	public static Action<Transform> SendToDragable;
+		public static Action<Transform> SendToDragable;
 
-    public void Start () {	
-		SendToDragable(transform);
+		public void Start () {	
+			SendToDragable(transform);
+		}
 	}
 }

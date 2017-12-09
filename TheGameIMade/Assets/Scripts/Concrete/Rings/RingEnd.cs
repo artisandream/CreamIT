@@ -1,26 +1,29 @@
-﻿using System;
+﻿using Concrete.GameControl;
 using UnityEngine;
 
-public class RingEnd : MonoBehaviour {
+namespace Concrete.Rings
+{
+	public class RingEnd : MonoBehaviour {
 
-	public RingAsset ringAsset;
-	private CapsuleCollider cc;
+		public RingAsset RingAsset;
+		private CapsuleCollider _cc;
 
-	void Start()
-	{
-		cc = GetComponent<CapsuleCollider>();
-		RunGame.RestartWave += ResetCollider;
-	}
+		void Start()
+		{
+			_cc = GetComponent<CapsuleCollider>();
+			RunGame.RestartWave += ResetCollider;
+		}
 
-    private void ResetCollider()
-    {
-        cc.enabled = true;
-    }
+		private void ResetCollider()
+		{
+			_cc.enabled = true;
+		}
 
-    void OnTriggerEnter()
-	{
-		cc.enabled = false;
-		ringAsset.OnWin();
-	}
+		void OnTriggerEnter()
+		{
+			_cc.enabled = false;
+			RingAsset.OnWin();
+		}
 	
+	}
 }

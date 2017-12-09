@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class WayPointController : MonoBehaviour
+namespace Spawning
 {
-	public int NumberOfRows = 3;
-	public GameObject WayPointRowPrefab;
-
-	private void Awake()
+	public class WayPointController : MonoBehaviour
 	{
-		for (var i = 0; i < NumberOfRows; i++)
+		public int NumberOfRows = 3;
+		public GameObject WayPointRowPrefab;
+
+		private void Awake()
 		{
-			Instantiate(WayPointRowPrefab, transform);
+			for (var i = 0; i < NumberOfRows; i++)
+			{
+				Instantiate(WayPointRowPrefab, transform);
+			}
 		}
 	}
 }

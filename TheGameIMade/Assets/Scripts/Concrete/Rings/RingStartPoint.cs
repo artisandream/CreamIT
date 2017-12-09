@@ -1,14 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-public class RingStartPoint : MonoBehaviour
+namespace Concrete.Rings
 {
-
-    public static Action<Transform> SendRingStartPoint;
-
-    void Start()
+    public class RingStartPoint : MonoBehaviour
     {
-        SendRingStartPoint(transform);
-    }
 
+        public static Action<Transform> SendRingStartPoint;
+
+        void Start()
+        {
+            SendRingStartPoint(transform);
+        }
+
+    }
 }

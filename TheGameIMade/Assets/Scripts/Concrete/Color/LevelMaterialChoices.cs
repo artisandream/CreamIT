@@ -1,52 +1,56 @@
-﻿
+﻿using System.Collections.Generic;
+using Concrete.GameControl;
+using Static;
 using UnityEngine;
-using System.Collections.Generic;
 
-public class LevelMaterialChoices : MonoBehaviour
+namespace Concrete.Color
 {
-    public GameObject dragableAsset;
-    public GameObject ringAsset;
-    public int totalRingCount;
-    public List<Material> LevelMaterials;
-
-    void Awake()
+    public class LevelMaterialChoices : MonoBehaviour
     {
-        MaterialColor.GetMaterial += OnSetRandomColor;
-        WaveObject.RingCount += AddToRingCount;
-        AddDragableAssets();
-        Invoke("AddRingAssets", 0.5f);
-    }
+        public GameObject DragableAsset;
+        public GameObject RingAsset;
+        public int TotalRingCount;
+        public List<Material> LevelMaterials;
 
-    private void AddToRingCount(int _count)
-    {
-        totalRingCount += _count;
-        StaticFunctions.totalRingCount += _count;
-    }
-
-    void AddDragableAssets()
-    {
-        foreach (Material _m in LevelMaterials)
+        void Awake()
         {
-            GameObject newDragable = Instantiate(dragableAsset);
-            newDragable.GetComponent<SpriteRenderer>().material = _m;
-            newDragable.name = "Asset";
+            MaterialColor.GetMaterial += OnSetRandomColor;
+            WaveObject.RingCountAction += AddToRingCount;
+            AddDragableAssets();
+            Invoke("AddRingAssets", 0.5f);
         }
-    }
 
-    void AddRingAssets()
-    {
-        while (totalRingCount > 0)
+        private void AddToRingCount(int count)
         {
-            GameObject newRing = Instantiate(ringAsset);
-            newRing.name = "Asset";
-            totalRingCount--;
+            TotalRingCount += count;
+            StaticFunctions.totalRingCount += count;
         }
-    }
 
-    public Material OnSetRandomColor()
-    {
-        int random = StaticFunctions.RandomNumber(LevelMaterials.Count);
-        return LevelMaterials[random];
+        void AddDragableAssets()
+        {
+            foreach (Material _m in LevelMaterials)
+            {
+                GameObject newDragable = Instantiate(DragableAsset);
+                newDragable.GetComponent<SpriteRenderer>().material = _m;
+                newDragable.name = "Asset";
+            }
+        }
+
+        void AddRingAssets()
+        {
+            while (TotalRingCount > 0)
+            {
+                GameObject newRing = Instantiate(RingAsset);
+                newRing.name = "Asset";
+                TotalRingCount--;
+            }
+        }
+
+        public Material OnSetRandomColor()
+        {
+            int random = StaticFunctions.RandomNumber(LevelMaterials.Count);
+            return LevelMaterials[random];
+        }
     }
 }
 

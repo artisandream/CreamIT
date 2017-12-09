@@ -1,12 +1,15 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
-public class EndGame : MonoBehaviour {
+namespace Concrete.GameControl
+{
+	public class EndGame : MonoBehaviour {
 
-	public static Action GameOver;
+		public static Action GameOver;
 
-	void OnTriggerEnter(Collider other)
-	{
-		GameOver();
+		void OnTriggerEnter(Collider other)
+		{
+			GameOver();
+		}
 	}
 }

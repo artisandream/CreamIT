@@ -1,17 +1,20 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
-public class DragableStartPoint : MonoBehaviour {
+namespace Concrete.Dragable
+{
+	public class DragableStartPoint : MonoBehaviour {
 
-	public static Action<Transform> SendToGenerator;
+		public static Action<Transform> SendToGenerator;
 
-    public void OnRestart()
-    {
-        SendToGenerator(transform);
-    }
+		public void OnRestart()
+		{
+			SendToGenerator(transform);
+		}
 
-    public void Start () {
-		SendToGenerator(transform);
-	}
+		public void Start () {
+			SendToGenerator(transform);
+		}
 	
+	}
 }

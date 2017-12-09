@@ -1,6 +1,9 @@
 ﻿
-public interface IReset
+namespace Interfaces
 {
-    void OnReset(bool _bool);
-    void OnRestart();
+    public interface IReset
+    {
+        void OnReset(bool _bool);
+        void OnRestart();
+    }
 }

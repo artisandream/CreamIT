@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public class RingRecycle : MonoBehaviour {
+namespace Concrete.Rings
+{
+	public class RingRecycle : MonoBehaviour {
 
-	public RingAsset ringAsset;
+		public RingAsset RingAsset;
 	
-	void OnTriggerEnter()
-	{
-		ringAsset.OnWin();
+		void OnTriggerEnter()
+		{
+			RingAsset.OnWin();
 
+		}
 	}
 }
