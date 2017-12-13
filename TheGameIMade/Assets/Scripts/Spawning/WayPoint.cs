@@ -18,9 +18,12 @@ public class WayPoint : MonoBehaviour
         }
         else
         {
-            Debug.Log("OnTriggerEnter2D");
-            var gamePiece = gameObjectHit.GetComponent<GamePiece>();
-            gamePiece.MoveNextWayPoint();
+            var gamePiece = gameObjectHit.GetComponent<EmptyLetterGamePiece>();
+            
+            if (gamePiece != null)
+            {
+                gamePiece.MoveNextWayPoint(this);
+            }
         }
     }
 }

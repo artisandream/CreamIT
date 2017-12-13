@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - EmptyLetterBoxCollider
   - ModGame
   - RingEnd
   - Touch
