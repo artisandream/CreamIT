@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224888385455829300}
   - component: {fileID: 114522083873953718}
+  - component: {fileID: 114525775881056696}
   m_Layer: 5
   m_Name: World
   m_TagString: Untagged
@@ -210,6 +211,21 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &114525775881056696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701611921329896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1353992364c4f9485f952202f7e50b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _titleText: {fileID: 114218886150278028}
+  _levelParent: {fileID: 1591799807630936}
+  _levelPrefab: {fileID: 1380878017707166, guid: 2ec19a30447d148c0be4ff6e90cf1c30,
+    type: 2}
 --- !u!114 &114629526234865526
 MonoBehaviour:
   m_ObjectHideFlags: 1

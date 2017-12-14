@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelId: 0
   _levelName: Dinosaurs
-  _isLocked: 0
+  _isLocked: 1
   _wordsToPlay:
   - WordCountMap: 0
     WordIndex: 0

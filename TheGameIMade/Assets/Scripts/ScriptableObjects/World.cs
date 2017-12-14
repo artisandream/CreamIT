@@ -18,7 +18,7 @@ public class World : ScriptableObject
         get { return _worldName; }
     }
 
-    public List<Level> GetLevels()
+    public IEnumerable<Level> GetLevels()
     {
         return _levels;
     }
