@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c2f9d2e076b448f8c817a4b445abfd, type: 3}
+  m_Name: A_World
+  m_EditorClassIdentifier: 
+  _worldId: 0
+  _worldName: Animals
+  _isLocked: 0
+  _levels:
+  - {fileID: 11400000, guid: c620382ee311445ee9a811d12ae01b6b, type: 2}
+  - {fileID: 11400000, guid: 6ff27ab32176b4fa1bd2ca501a785510, type: 2}
+  - {fileID: 11400000, guid: 9a05b3ab9b640440992a31c1201438a1, type: 2}
+  - {fileID: 11400000, guid: 8b6472dbeb6b74340b345d4756fe6fb8, type: 2}
+  - {fileID: 11400000, guid: 7c1125bf62dba4ab7944ef6a9305d40d, type: 2}
+  - {fileID: 11400000, guid: d97f1a0f34ff54e638c9070d128bf844, type: 2}
