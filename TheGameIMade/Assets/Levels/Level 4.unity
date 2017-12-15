@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45134473, g: 0.5003097, b: 0.5694964, a: 1}
+  m_IndirectSpecularColor: {r: 0.004091417, g: 0.00022388021, b: 0.00000005735568,
+    a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -689,10 +690,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119de9d15f5ea4cd7a0dcd8d4483d9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragableAsset: {fileID: 1000010159352832, guid: 34de4e2d9483d444d9f5800dca8a16f1,
-    type: 2}
-  ringAsset: {fileID: 1000013939322570, guid: 580e5c90610ee4eb8ac2a941e7fffea2, type: 2}
-  totalRingCount: 0
+  DragableAsset: {fileID: 0}
+  RingAsset: {fileID: 0}
+  TotalRingCount: 0
   LevelMaterials:
   - {fileID: 2100000, guid: a1b08efda71e3429a853c5707acc31fc, type: 2}
   - {fileID: 2100000, guid: ee21a06fb33d74b61933f9cb10f2e85f, type: 2}
@@ -903,8 +903,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445395206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 569, y: 320, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 98, y: 174, z: 0}
+  m_LocalScale: {x: 0.435, y: 0.435, z: 0.435}
   m_Children:
   - {fileID: 771326601}
   m_Father: {fileID: 0}
@@ -1143,7 +1143,7 @@ Camera:
   far clip plane: 30
   field of view: 60
   orthographic: 1
-  orthographic size: 8.71
+  orthographic size: 17
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1164,11 +1164,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559534399}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0, y: 20, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1797007749}
+  m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &696238969
@@ -1472,13 +1472,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d68645994424584923b030d3311c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringCount: 3
-  ringGenerateTime: 1.3
-  ringMoveSpeed: 3.8
-  ringAddSpeed: 0.1
-  dragableAppearTime: 0.2
-  waveModTimeHold: 5
-  waveModCount: 3
+  RingCount: 6
+  RingGenerateTime: 3
+  RingMoveSpeed: 3.5
+  RingAddSpeed: 0.1
+  DragableAppearTime: 0.2
+  WaveModTimeHold: 5
+  WaveModCount: 3
 --- !u!1 &1158211887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,9 +1685,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0662caabed8764e17a16aecd23db826f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rignRelocation: {fileID: 1296132934}
+  RignRelocation: {fileID: 0}
   RingStartPoints: []
-  destination: {fileID: 537939962}
+  Destination: {fileID: 0}
   RingAssetList: []
 --- !u!1 &1291523732
 GameObject:
@@ -1862,13 +1862,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d68645994424584923b030d3311c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ringCount: 3
-  ringGenerateTime: 1.2
-  ringMoveSpeed: 3.5
-  ringAddSpeed: 0.1
-  dragableAppearTime: 0.2
-  waveModTimeHold: 5
-  waveModCount: 3
+  RingCount: 6
+  RingGenerateTime: 3
+  RingMoveSpeed: 3.5
+  RingAddSpeed: 0.1
+  DragableAppearTime: 0.2
+  WaveModTimeHold: 5
+  WaveModCount: 3
 --- !u!1 &1476193986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,7 +2255,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1797007748}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2263,10 +2263,9 @@ Transform:
   - {fileID: 2109269482}
   - {fileID: 1544434034}
   - {fileID: 127886654}
-  - {fileID: 559534405}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1835766279
 Prefab:
   m_ObjectHideFlags: 0
