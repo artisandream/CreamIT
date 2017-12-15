@@ -1,0 +1,3 @@
+[submodule "TheGameIMade/Assets/unity-ui-extens"]
+	path = TheGameIMade/Assets/unity-ui-extens
+	url = https://bitbucket.org/UnityUIExtensions/unity-ui-extensions.git
