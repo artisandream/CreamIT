@@ -11,22 +11,11 @@
             <e p="DOTween43.xml" t="Include" />
             <e p="DOTween46.xml" t="Include" />
             <e p="DOTween50.xml" t="Include" />
+            <e p="Examples" t="Include">
+              <e p="Basics.cs" t="Include" />
+              <e p="Sequences.cs" t="Include" />
+            </e>
             <e p="readme.txt" t="Include" />
-          </e>
-        </e>
-        <e p="NavMeshComponents" t="Include">
-          <e p="Editor" t="Include">
-            <e p="NavMeshComponentsGUIUtility.cs" t="Include" />
-            <e p="NavMeshLinkEditor.cs" t="Include" />
-            <e p="NavMeshModifierEditor.cs" t="Include" />
-            <e p="NavMeshModifierVolumeEditor.cs" t="Include" />
-            <e p="NavMeshSurfaceEditor.cs" t="Include" />
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="NavMeshLink.cs" t="Include" />
-            <e p="NavMeshModifier.cs" t="Include" />
-            <e p="NavMeshModifierVolume.cs" t="Include" />
-            <e p="NavMeshSurface.cs" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">
@@ -37,39 +26,6 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Audio" t="Include">
-            <e p="MusicController.cs" t="Include" />
-          </e>
-          <e p="Concrete" t="Include">
-            <e p="Color" t="Include">
-              <e p="ColorChoices.cs" t="Include" />
-              <e p="ColorTrigger.cs" t="Include" />
-              <e p="LevelMaterialChoices.cs" t="Include" />
-              <e p="MaterialColor.cs" t="Include" />
-            </e>
-            <e p="Dragable" t="Include">
-              <e p="DragableAsset.cs" t="Include" />
-              <e p="DragableFirstPoint.cs" t="Include" />
-              <e p="DragableGenerator.cs" t="Include" />
-              <e p="DragableStartPoint.cs" t="Include" />
-            </e>
-            <e p="GameControl" t="Include">
-              <e p="EndGame.cs" t="Include" />
-              <e p="NextWave.cs" t="Include" />
-              <e p="RunGame.cs" t="Include" />
-              <e p="WaveObject.cs" t="Include" />
-            </e>
-            <e p="GUI" t="Include">
-              <e p="StartButton.cs" t="Include" />
-            </e>
-            <e p="Rings" t="Include">
-              <e p="RingAsset.cs" t="Include" />
-              <e p="RingEnd.cs" t="Include" />
-              <e p="RingGenerator.cs" t="Include" />
-              <e p="RingRecycle.cs" t="Include" />
-              <e p="RingStartPoint.cs" t="Include" />
-            </e>
-          </e>
           <e p="Enums" t="Include">
             <e p="StarRating.cs" t="Include" />
           </e>
@@ -81,9 +37,6 @@
             <e p="WordCount.cs" t="Include" />
             <e p="WordMap.cs" t="Include" />
             <e p="WordsForLevel.cs" t="Include" />
-          </e>
-          <e p="Interfaces" t="Include">
-            <e p="Interfaces.cs" t="Include" />
           </e>
           <e p="ScriptableObjects" t="Include">
             <e p="Characters.cs" t="Include" />
@@ -99,9 +52,6 @@
             <e p="WayPoint.cs" t="Include" />
             <e p="WayPointController.cs" t="Include" />
             <e p="WayPointRow.cs" t="Include" />
-          </e>
-          <e p="Static" t="Include">
-            <e p="StaticFunctions.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="LevelManager.cs" t="Include" />
@@ -172,7 +122,7 @@
             </e>
           </e>
         </e>
-        <e p="unity-ui-extensions" t="Include">
+        <e p="unity-ui-extens" t="Include">
           <e p="Editor" t="Include">
             <e p="AccordionElementEditor.cs" t="Include" />
             <e p="BezierLineRendererEditor.cs" t="Include" />
@@ -190,6 +140,72 @@
             <e p="TextPicRenameEditor.cs" t="Include" />
             <e p="uGUITools.cs" t="Include" />
             <e p="UIExtensionsMenuOptions.cs" t="Include" />
+          </e>
+          <e p="Examples" t="Include">
+            <e p="ComboBox" t="Include">
+              <e p="ComboBoxChanged.cs" t="Include" />
+            </e>
+            <e p="Cooldown" t="Include">
+              <e p="CooldownEffect_Image.cs" t="Include" />
+              <e p="CooldownEffect_SAUIM.cs" t="Include" />
+            </e>
+            <e p="FancyScrollView" t="Include">
+              <e p="01_Basic" t="Include">
+                <e p="Example01CellDto.cs" t="Include" />
+                <e p="Example01Scene.cs" t="Include" />
+                <e p="Example01ScrollView.cs" t="Include" />
+                <e p="Example01ScrollViewCell.cs" t="Include" />
+              </e>
+              <e p="02_CellEventHandling" t="Include">
+                <e p="Example02CellDto.cs" t="Include" />
+                <e p="Example02Scene.cs" t="Include" />
+                <e p="Example02ScrollView.cs" t="Include" />
+                <e p="Example02ScrollViewCell.cs" t="Include" />
+                <e p="Example02ScrollViewContext.cs" t="Include" />
+              </e>
+              <e p="03_InfiniteScroll" t="Include">
+                <e p="Example03CellDto.cs" t="Include" />
+                <e p="Example03Scene.cs" t="Include" />
+                <e p="Example03ScrollView.cs" t="Include" />
+                <e p="Example03ScrollViewCell.cs" t="Include" />
+                <e p="Example03ScrollViewContext.cs" t="Include" />
+              </e>
+            </e>
+            <e p="HSS-VSS-ScrollSnap" t="Include">
+              <e p="PaginationScript.cs" t="Include" />
+              <e p="UpdateScrollSnap.cs" t="Include" />
+            </e>
+            <e p="MenuExample" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Menus" t="Include">
+                  <e p="AwesomeMenu.cs" t="Include" />
+                  <e p="GameMenu.cs" t="Include" />
+                  <e p="MainMenu.cs" t="Include" />
+                  <e p="OptionsMenu.cs" t="Include" />
+                  <e p="PauseMenu.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="RadialSlider" t="Include">
+              <e p="UpdateRadialValue.cs" t="Include" />
+            </e>
+            <e p="TextEffects" t="Include">
+              <e p="AnimateEffects.cs" t="Include" />
+              <e p="testHref.cs" t="Include" />
+            </e>
+            <e p="UICircleProgress" t="Include">
+              <e p="UICircleChangeColor.cs" t="Include" />
+              <e p="UICircleChangeDensity.cs" t="Include" />
+            </e>
+            <e p="UILineRenderer" t="Include">
+              <e p="LineRendererOrbit.cs" t="Include" />
+              <e p="TestAddingPoints.cs" t="Include" />
+            </e>
+            <e p="UIVerticalScrollerDemo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="ScrollingCalendar.cs" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="Scripts" t="Include">
             <e p="Controls" t="Include">
@@ -394,9 +410,7 @@
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp/bin" t="ExcludeRecursive" />
       <e p="TheGameIMade.sln" t="IncludeFlat" />
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_TheGameIMade.-1430103308.00" t="ExcludeRecursive" />
